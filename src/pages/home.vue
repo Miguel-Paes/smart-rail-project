@@ -1,5 +1,5 @@
 <template>
-  <HelloWorld />
+  <h1>Dashboard Geral</h1>
 </template>
 
 <script setup>

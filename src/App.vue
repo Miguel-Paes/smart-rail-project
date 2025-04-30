@@ -2,16 +2,15 @@
   import { RouterView } from 'vue-router'
 
   import HeaderComponent from './components/HeaderComponent.vue'
-  import { useThemeStore } from './stores/themeStore.js'
 </script>
 
 <template>
   <v-app>
-    <div class="container">
+    <v-main>
       <HeaderComponent />
 
       <RouterView />
-    </div>
+    </v-main>
   </v-app>
 </template>
 
