@@ -4,7 +4,7 @@
 
   import { useThemeStore } from '@/stores/themeStore'
 
-const router = useRouter()
+  const router = useRouter()
 
   const themeStore = useThemeStore()
 
@@ -28,10 +28,10 @@ const router = useRouter()
     {
       title: 'Notificações',
       value: 'alertas-e-notificacoes',
-    }
+    },
   ]
 
-  const alterPage = (page) => {
+  const alterPage = page => {
     router.push({ name: page })
   }
 
