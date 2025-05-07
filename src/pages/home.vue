@@ -7,8 +7,20 @@
     { id: 3, name: 'Estação Sul' },
     { id: 4, name: 'Estação Leste' },
     { id: 5, name: 'Estação Oeste' },
-  ]
-  )
+  ]);
+
+  const states = ref(['AC', 'AL', 'Ap', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO']);
+
+  const selectedStation = ref(null);
+
+  const userLocation = ref({
+    cep: '',
+    number: '',
+    city: '',
+    state: '',
+    street: '',
+    departureTime: '',
+  });
   </script>
 
 <template>
@@ -17,7 +29,13 @@
 
     <v-row class="d-flex" :class="$vuetify.display.mobile ? '' : 'ga-10'" dense>
       <v-col class="d-flex align-center pa-0" cols="12" lg="4" md="6">
-        <v-select item-title="name" :items="stations" label="Escolha a estação" variant="underlined" />
+        <v-select
+          v-model="selectedStation"
+          item-title="name"
+          :items="stations"
+          label="Escolha a estação"
+          variant="underlined"
+        />
       </v-col>
 
       <v-col
@@ -40,45 +58,35 @@
           </template>
 
           <template #default="{ isActive }">
-            <v-card :class="$vuetify.display.mobile ? 'pa-3' : 'pa-7'" title="Digite as informações">
+            <v-card :class="$vuetify.display.mobile ? 'pa-1' : 'pa-7'" title="Digite as informações">
               <v-form>
                 <v-row class="d-flex">
                   <v-col cols="12" lg="6">
-                    <v-text-field placeholder="CEP" variant="underlined" />
+                    <v-text-field v-model="userLocation.cep" label="CEP" variant="outlined" />
                   </v-col>
 
                   <v-col cols="12" lg="6">
-                    <v-text-field placeholder="Número" variant="underlined" />
-                  </v-col>
-                </v-row>
-
-                <v-row class="d-flex">
-                  <v-col cols="12" lg="6">
-                    <v-text-field placeholder="Cidade" variant="underlined" />
-                  </v-col>
-
-                  <v-col cols="12" lg="6">
-                    <v-text-field placeholder="Estado" variant="underlined" />
+                    <v-text-field v-model="userLocation.departureTime" label="Horário de Saída" variant="outlined" />
                   </v-col>
                 </v-row>
 
                 <v-row class="d-flex">
                   <v-col cols="12" lg="6">
-                    <v-text-field placeholder="Rua" variant="underlined" />
+                    <v-select v-model="userLocation.state" :items="states" label="Estado" variant="outlined" />
                   </v-col>
 
                   <v-col cols="12" lg="6">
-                    <v-text-field placeholder="Complemento" variant="underlined" />
+                    <v-text-field v-model="userLocation.city" label="Cidade" variant="outlined" />
                   </v-col>
                 </v-row>
 
                 <v-row class="d-flex">
                   <v-col cols="12" lg="6">
-                    <v-text-field placeholder="Ponto de Referência" variant="underlined" />
+                    <v-text-field v-model="userLocation.street" label="Rua" variant="outlined" />
                   </v-col>
 
                   <v-col cols="12" lg="6">
-                    <v-text-field placeholder="Horário de Saída" variant="underlined" />
+                    <v-text-field v-model="userLocation.number" label="Número" variant="outlined" />
                   </v-col>
                 </v-row>
 
@@ -90,7 +98,6 @@
               </v-form>
             </v-card>
           </template>
-
         </v-dialog>
       </v-col>
     </v-row>
