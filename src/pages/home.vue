@@ -14,13 +14,44 @@
   const selectedStation = ref(null);
 
   const userLocation = ref({
-    cep: '',
     number: '',
+    departureTime: '',
+    street: '',
+    neighborhood: '',
     city: '',
     state: '',
-    street: '',
-    departureTime: '',
   });
+
+  const cep = ref('');
+
+  function onCepInput () {
+    if (cep.value.length === 8) {
+      searchAddress();
+    }
+  }
+
+  function searchAddress () {
+    if (cep.value.length !== 8) {
+      alert('CEP inválido');
+    } else {
+      fetch(`https://viacep.com.br/ws/${cep.value}/json/`)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Erro ao buscar endereço');
+          }
+          return response.json();
+        })
+        .then(data => {
+          userLocation.value.street = data.logradouro;
+          userLocation.value.neighborhood = data.bairro;
+          userLocation.value.city = data.localidade;
+          userLocation.value.state = data.uf
+        })
+        .catch(error => {
+          console.log('Erro:', error)
+        })
+    }
+  }
   </script>
 
 <template>
@@ -62,7 +93,13 @@
               <v-form>
                 <v-row class="d-flex">
                   <v-col cols="12" lg="6">
-                    <v-text-field v-model="userLocation.cep" label="CEP" variant="outlined" />
+                    <v-text-field
+                      v-model="cep"
+                      dense
+                      label="Digite o CEP desejado..."
+                      @input="onCepInput"
+                      maxlength="8"
+                    />
                   </v-col>
 
                   <v-col cols="12" lg="6">
