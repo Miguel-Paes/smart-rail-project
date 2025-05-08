@@ -1,28 +1,18 @@
   <script setup>
   import { ref } from 'vue';
+  import { VTimePicker } from 'vuetify/labs/VTimePicker'
 
-  const stations = ref([
-    { id: 1, name: 'Estação Central' },
-    { id: 2, name: 'Estação Norte' },
-    { id: 3, name: 'Estação Sul' },
-    { id: 4, name: 'Estação Leste' },
-    { id: 5, name: 'Estação Oeste' },
-  ]);
+  import { useStationStore } from '@/stores/stationStore.js'
+
+  const stationStore = useStationStore()
+
+  const userLocation = ref(stationStore.userLocation)
+
+  const menu2 = ref(false)
 
   const states = ref(['AC', 'AL', 'Ap', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO']);
 
-  const selectedStation = ref(null);
-
-  const userLocation = ref({
-    number: '',
-    departureTime: '',
-    street: '',
-    neighborhood: '',
-    city: '',
-    state: '',
-  });
-
-  const cep = ref('');
+  const cep = ref(stationStore.userLocation.cep);
 
   function onCepInput () {
     if (cep.value.length === 8) {
@@ -61,11 +51,13 @@
     <v-row class="d-flex" :class="$vuetify.display.mobile ? '' : 'ga-10'" dense>
       <v-col class="d-flex align-center pa-0" cols="12" lg="4" md="6">
         <v-select
-          v-model="selectedStation"
+          v-model="stationStore.stationId"
           item-title="name"
-          :items="stations"
+          item-value="id"
+          :items="stationStore.stations"
           label="Escolha a estação"
           variant="underlined"
+          @update:modelValue="stationStore.getStationLines"
         />
       </v-col>
 
@@ -79,10 +71,11 @@
         <v-dialog>
           <template #activator="{ props: activatorProps }">
             <v-btn
-              class="pa-2 d-flex align-center bg-deep-purple-accent-3 h-75"
+              class="pa-2 d-flex align-center h-75"
               :class="$vuetify.display.mobile ? 'w-100 h-25' : 'h-50 w-100' "
+              color="red-accent-3"
               v-bind="activatorProps"
-              variant="outlined"
+              variant="tonal"
             >
               Não sei a estação mais próxima
             </v-btn>
@@ -97,38 +90,59 @@
                       v-model="cep"
                       dense
                       label="Digite o CEP desejado..."
-                      @input="onCepInput"
                       maxlength="8"
+                      @input="onCepInput"
                     />
                   </v-col>
 
                   <v-col cols="12" lg="6">
-                    <v-text-field v-model="userLocation.departureTime" label="Horário de Saída" variant="outlined" />
+                    <v-text-field
+                      v-model="stationStore.userLocation.departureTime"
+                      :active="menu2"
+                      :focus="menu2"
+                      label="Horário de Saída"
+                      prepend-icon="mdi-clock-time-four-outline"
+                      readonly
+                    >
+                      <v-menu
+                        v-model="menu2"
+                        activator="parent"
+                        :close-on-content-click="false"
+                        transition="scale-transition"
+                      >
+                        <v-time-picker
+                          v-if="menu2"
+                          v-model="stationStore.userLocation.departureTime"
+                          ampm-in-title="true"
+                          full-width
+                        />
+                      </v-menu>
+                    </v-text-field>
                   </v-col>
                 </v-row>
 
                 <v-row class="d-flex">
                   <v-col cols="12" lg="6">
-                    <v-select v-model="userLocation.state" :items="states" label="Estado" variant="outlined" />
+                    <v-select v-model="stationStore.userLocation.state" :items="states" label="Estado" variant="outlined" />
                   </v-col>
 
                   <v-col cols="12" lg="6">
-                    <v-text-field v-model="userLocation.city" label="Cidade" variant="outlined" />
+                    <v-text-field v-model="stationStore.userLocation.city" label="Cidade" variant="outlined" />
                   </v-col>
                 </v-row>
 
                 <v-row class="d-flex">
                   <v-col cols="12" lg="6">
-                    <v-text-field v-model="userLocation.street" label="Rua" variant="outlined" />
+                    <v-text-field v-model="stationStore.userLocation.street" label="Rua" variant="outlined" />
                   </v-col>
 
                   <v-col cols="12" lg="6">
-                    <v-text-field v-model="userLocation.number" label="Número" variant="outlined" />
+                    <v-text-field v-model="stationStore.userLocation.number" label="Número" variant="outlined" />
                   </v-col>
                 </v-row>
 
                 <v-row class="d-flex justify-center">
-                  <v-btn class="bg-deep-purple-darken-4" color="deep-purple-lighten-4" variant="flat" @click="isActive.value = false">
+                  <v-btn color="red-accent-3" variant="tonal" @click="isActive.value = false">
                     Descobrir estação
                   </v-btn>
                 </v-row>
@@ -136,6 +150,13 @@
             </v-card>
           </template>
         </v-dialog>
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col cols="12" lg="6">
+        <v-card v-for="line in stationStore.stationLines" :key="line.id">
+          {{ line.name }}
+        </v-card>
       </v-col>
     </v-row>
   </v-main>
