@@ -1,16 +1,15 @@
   <script setup>
-  import { computed, ref } from 'vue';
+  import { ref } from 'vue';
   import { VTimePicker } from 'vuetify/labs/VTimePicker'
-  import { useDisplay } from 'vuetify'
 
   import { useStationStore } from '@/stores/stationStore.js'
+  import { useDisplayStore } from '@/stores/displayStore.js'
 
   const stationStore = useStationStore()
 
   const userLocation = ref(stationStore.userLocation)
 
-
-  const { xs, sm, mdAndUp } = useDisplay()
+  const displayStore = useDisplayStore()
 
   const menu2 = ref(false)
 
@@ -49,11 +48,11 @@
   </script>
 
 <template>
-  <v-main class="pa-0 pt-1" :class="$vuetify.display.mobile ? 'px-3' : 'px-7'">
-    <h2 class="mb-3" :class="$vuetify.display.mobile ? '' : 'text-h4 font-weight-bold'">Dashboard Geral</h2>
+  <v-main class="pa-0 pt-1" :class="displayStore.xs ? 'px-3 py-1' : displayStore.sm ? 'px-5 py-2' : 'px-7 py-3'">
+    <h2 class="mb-3 font-weight-bold" :class="displayStore.xs ? 'text-h6' : displayStore.sm ? 'text-h5' : 'text-h4'">Dashboard Geral</h2>
 
-    <v-row class="d-flex" :class="$vuetify.display.mobile ? '' : 'ga-10'" dense>
-      <v-col class="d-flex align-center pa-0" cols="12" lg="4" md="6">
+    <v-row class="d-flex" :class="displayStore.xs ? '' : displayStore.sm ? '' : 'ga-3'" dense>
+      <v-col class="d-flex align-center pa-0" cols="12" md="3" sm="6">
         <v-select
           v-model="stationStore.stationId"
           item-title="name"
@@ -67,15 +66,15 @@
 
       <v-col
         class="d-flex align-center pa-0"
-        :class="$vuetify.display.mobile ? 'justify-center' : 'justify-start'"
+        :class="displayStore.xs ? 'justify-center' : displayStore.sm ? 'justify-center' : 'justify-start'"
         cols="12"
-        lg="2"
-        md="6"
+        md="3"
+        sm="6"
       >
         <v-dialog>
           <template #activator="{ props: activatorProps }">
             <v-btn
-              class="pa-2 d-flex align-center h-75"
+              class="pa-2 d-flex align-center h-75 text-no-wrap"
               :class="$vuetify.display.mobile ? 'w-100 h-25' : 'h-50 w-100' "
               color="red-accent-3"
               v-bind="activatorProps"
@@ -157,10 +156,25 @@
       </v-col>
     </v-row>
     <v-row>
-      <v-col cols="12" lg="6">
-        <v-card v-for="line in stationStore.stationLines" :key="line.id" :class="xs ? 'bg-red' : sm ? 'bg-blue' : 'bg-green'">
-          {{ line.name }}
-        </v-card>
+      <v-col cols="12" md="6">
+        <v-table
+          fixed-header
+        >
+          <thead>
+            <tr>
+              <th class="text-left">Nome</th>
+              <th class="text-left">Parada</th>
+              <th class="text-left">Destino Final</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="line in stationStore.stationLines" :key="line.id">
+              <td>{{ line.name }}</td>
+              <td>{{ line.stop }}</td>
+              <td>{{ line.finalDestination }}</td>
+            </tr>
+          </tbody>
+        </v-table>
       </v-col>
     </v-row>
   </v-main>
