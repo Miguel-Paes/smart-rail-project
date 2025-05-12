@@ -1,12 +1,16 @@
   <script setup>
-  import { ref } from 'vue';
+  import { computed, ref } from 'vue';
   import { VTimePicker } from 'vuetify/labs/VTimePicker'
+  import { useDisplay } from 'vuetify'
 
   import { useStationStore } from '@/stores/stationStore.js'
 
   const stationStore = useStationStore()
 
   const userLocation = ref(stationStore.userLocation)
+
+
+  const { xs, sm, mdAndUp } = useDisplay()
 
   const menu2 = ref(false)
 
@@ -57,7 +61,7 @@
           :items="stationStore.stations"
           label="Escolha a estação"
           variant="underlined"
-          @update:modelValue="stationStore.getStationLines"
+          @update:model-value="stationStore.getStationLines"
         />
       </v-col>
 
@@ -154,7 +158,7 @@
     </v-row>
     <v-row>
       <v-col cols="12" lg="6">
-        <v-card v-for="line in stationStore.stationLines" :key="line.id">
+        <v-card v-for="line in stationStore.stationLines" :key="line.id" :class="xs ? 'bg-red' : sm ? 'bg-blue' : 'bg-green'">
           {{ line.name }}
         </v-card>
       </v-col>
