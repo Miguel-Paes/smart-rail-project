@@ -95,6 +95,7 @@
                           dense
                           label="Digite o CEP desejado..."
                           maxlength="8"
+                          variant="underlined"
                           @input="onCepInput"
                         />
                       </v-col>
@@ -105,8 +106,8 @@
                           :active="menu2"
                           :focus="menu2"
                           label="Horário de Saída"
-                          prepend-icon="mdi-clock-time-four-outline"
                           readonly
+                          variant="underlined"
                         >
                           <v-menu
                             v-model="menu2"
@@ -127,21 +128,21 @@
 
                     <v-row class="d-flex">
                       <v-col cols="12" lg="6">
-                        <v-select v-model="stationStore.userLocation.state" :items="states" label="Estado" variant="outlined" />
+                        <v-select v-model="stationStore.userLocation.state" :items="states" label="Estado" variant="underlined" />
                       </v-col>
 
                       <v-col cols="12" lg="6">
-                        <v-text-field v-model="stationStore.userLocation.city" label="Cidade" variant="outlined" />
+                        <v-text-field v-model="stationStore.userLocation.city" label="Cidade" variant="underlined" />
                       </v-col>
                     </v-row>
 
                     <v-row class="d-flex">
                       <v-col cols="12" lg="6">
-                        <v-text-field v-model="stationStore.userLocation.street" label="Rua" variant="outlined" />
+                        <v-text-field v-model="stationStore.userLocation.street" label="Rua" variant="underlined" />
                       </v-col>
 
                       <v-col cols="12" lg="6">
-                        <v-text-field v-model="stationStore.userLocation.number" label="Número" variant="outlined" />
+                        <v-text-field v-model="stationStore.userLocation.number" label="Número" variant="underlined" />
                       </v-col>
                     </v-row>
 
