@@ -7,6 +7,12 @@
 
   const stationStore = useStationStore()
 
+  const warnings = ref([
+    { id: 1, text: 'Linha A está com 15 minutos de atraso', station: 1 },
+    { id: 2, text: 'Linha D está com 5 minutos de atraso', station: 2 },
+    { id: 3, text: 'Linha O está desativada por tempo indeterminado por conta de uma alteração nos trilhos', station: 5 },
+  ])
+
   const userLocation = ref(stationStore.userLocation)
 
   const displayStore = useDisplayStore()
@@ -119,7 +125,9 @@
                               v-if="menu2"
                               v-model="stationStore.userLocation.departureTime"
                               ampm-in-title="true"
+                              color="red-accent-3"
                               full-width
+                              scrollable="true"
                             />
                           </v-menu>
                         </v-text-field>
@@ -160,6 +168,7 @@
         <v-row>
           <v-col cols="12">
             <v-table
+              v-if="stationStore.stationLines != null"
               fixed-header
             >
               <thead>
@@ -184,6 +193,14 @@
       <v-col cols="12" md="6">
         <v-card class="w-100 h-100 pa-2 border-red-accent-3 rounded rounded-lg" color="red-accent-3" variant="tonal">
           <v-card-title class="text-center">AVISOS</v-card-title>
+
+          <v-card-item>
+            {{ warnings.length === 0 ? 'Nenhum aviso' : '' }}
+          </v-card-item>
+
+          <v-card-item v-for="warning in warnings" :key="warning.id">
+            {{ warning.id }}. {{ warning.text }}
+          </v-card-item>
         </v-card>
       </v-col>
     </v-row>
