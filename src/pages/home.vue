@@ -4,18 +4,16 @@
 
   import { useStationStore } from '@/stores/stationStore.js'
   import { useDisplayStore } from '@/stores/displayStore.js'
+  import { useWarningStore } from '@/stores/warningsStore';
 
   const stationStore = useStationStore()
+  const displayStore = useDisplayStore()
+  const warningStore = useWarningStore()
 
-  const warnings = ref([
-    { id: 1, text: 'Linha A está com 15 minutos de atraso', station: 1 },
-    { id: 2, text: 'Linha D está com 5 minutos de atraso', station: 2 },
-    { id: 3, text: 'Linha O está desativada por tempo indeterminado por conta de uma alteração nos trilhos', station: 5 },
-  ])
+  const warnings = ref(warningStore.warnings)
 
   const userLocation = ref(stationStore.userLocation)
 
-  const displayStore = useDisplayStore()
 
   const menu2 = ref(false)
 
