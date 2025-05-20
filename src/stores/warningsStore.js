@@ -9,23 +9,30 @@ export const useWarningStore = defineStore('warnings', () => {
     id: null,
     message: null,
     type: null,
-    duration: null,
+    duration: {
+      start: null,
+      end: null,
+    },
     station: null,
+    isFromUser: false,
   })
 
   const stationWarnings = ref([])
 
   function addStationWarning(stationId) {
-    stationWarnings.value = warnings.value.filter((warning) => {
+    stationWarnings.value = warnings.value.filter(warning => {
       warning.station = stationId
 
       return warning
     })
   }
 
+  const warningID = ref(1)
+
   function addWarning(warning) {
     if (warning.id === null) {
-      warning.id = Date.now()
+      warning.id = warningID.value
+      warningID.value += 1
     }
 
     if (warning.type === null) {
@@ -40,8 +47,8 @@ export const useWarningStore = defineStore('warnings', () => {
   }
 
   function removeWarning(id) {
-    const removedWarning = warnings.value.find((warning) => warning.id === id)
-    if (removeWarning) {
+    const removedWarning = warnings.value.find(warning => warning.id === id)
+    if (removedWarning) {
       warnings.value.splice(warnings.value.indexOf(removedWarning), 1)
     }
     return removedWarning
