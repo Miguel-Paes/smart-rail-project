@@ -5,17 +5,23 @@ export const useWarningStore = defineStore('warnings', () => {
 
   const warnings = ref([])
 
+  const warningID = ref(1)
+
   const defaultWarning = ref({
-    id: null,
-    message: null,
-    type: null,
+    id: warningID.value,
+    message: 'A',
+    notificationType: ['TESTE'],
     duration: {
-      start: null,
-      end: null,
+      start: '',
+      end: '',
     },
-    station: null,
+    station: '',
     isFromUser: false,
   })
+
+  const warningTypes = ref([
+    'Cancelamento', 'Acidente', 'Interdição', 'Desvio', 'Atraso', 'Informação', 'Alerta', 'Manutenção', 'Recomendação', 'Mudança de Horário', 'Mudança de Plataforma', 'Mudança de Linha', 'Mudança de Trem',
+  ])
 
   const stationWarnings = ref([])
 
@@ -27,23 +33,9 @@ export const useWarningStore = defineStore('warnings', () => {
     })
   }
 
-  const warningID = ref(1)
-
   function addWarning(warning) {
-    if (warning.id === null) {
-      warning.id = warningID.value
-      warningID.value += 1
-    }
-
-    if (warning.type === null) {
-      warning.type = 'info'
-    }
-
-    if (warning.duration === null) {
-      warning.duration = 5000
-    }
-
     warnings.value.push(warning)
+    warningID.value += 1
   }
 
   function removeWarning(id) {
@@ -54,5 +46,5 @@ export const useWarningStore = defineStore('warnings', () => {
     return removedWarning
   }
 
-  return { warnings, defaultWarning, addWarning, removeWarning, stationWarnings, addStationWarning }
+  return { warnings, defaultWarning, addWarning, removeWarning, stationWarnings, addStationWarning, warningTypes }
 })

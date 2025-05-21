@@ -1,5 +1,5 @@
 <script setup>
-  import { ref, shallowRef } from 'vue';
+  import { ref } from 'vue';
   import { VTimePicker } from 'vuetify/labs/VTimePicker';
 
   import { useWarningStore } from '@/stores/warningsStore';
@@ -11,15 +11,15 @@
 
   const newWarning = ref({ ...warningStore.defaultWarning })
 
-  const dialog = shallowRef(false)
+  const dialog = ref(false)
 
   const modal2 = ref(false)
 
-  function createWarning(warning) {
-    warningStore.addWarning(warning.value)
-    alert("Aviso criado com sucesso!")
-    newWarning.value = structuredClone(warningStore.defaultWarning.value)
+  function createWarning (warning) {
+    console.log(warning)
     dialog.value = false
+    warningStore.addWarning(warning)
+    newWarning.value = structuredClone(warningStore.defaultWarning.value)
   }
 
 </script>
@@ -49,7 +49,15 @@
                 <v-text-field v-model="newWarning.message" class="text-red-accent-3" label="Mensagem" variant="underlined" />
               </v-col>
               <v-col cols="12" sm="6">
-                <v-select v-model="newWarning.type" class="text-red-accent-3" label="Tipo de Aviso" variant="underlined" />
+                <v-select
+                  v-model="newWarning.notificationType"
+                  class="text-red-accent-3"
+                  item-value="item"
+                  :items="warningStore.warningTypes"
+                  label="Tipo de Aviso"
+                  multiple
+                  variant="underlined"
+                />
               </v-col>
             </v-row>
 
@@ -70,10 +78,15 @@
                   :active="modal2"
                   class="text-red-accent-3"
                   :focused="modal2"
-                  label="Definir duração"
+                  :label="newWarning.duration.start === null && newWarning.duration.end === null ? 'Definir Duração' : `Início: ${newWarning.duration.start} - Término: ${newWarning.duration.end}`"
                   readonly
                   variant="underlined"
                 >
+
+                  <span v-if="newWarning.duration.start != null && newWarning.duration.end != null">
+                    Início: {{ newWarning.duration.start }} - Término: {{ newWarning.duration.end }}
+                  </span>
+
                   <v-dialog
                     v-model="modal2"
                     activator="parent"
@@ -90,7 +103,6 @@
                             title="Horário de Início"
                           />
                         </v-col>
-
                         <v-col class="d-flex justify-center" cols="12" sm="6">
                           <v-time-picker
                             v-if="modal2"
@@ -104,12 +116,12 @@
                     </v-card>
                   </v-dialog>
                 </v-text-field>
-
+                {{ newWarning.type }}
               </v-col>
             </v-row>
 
             <v-row class="d-flex justify-center">
-              <v-col cols="12" md="2" sm=6>
+              <v-col cols="12" md="2" sm="6">
                 <v-btn class="w-100" color="red-accent-3" variant="tonal" @click="createWarning(newWarning)">Criar aviso</v-btn>
               </v-col>
             </v-row>
