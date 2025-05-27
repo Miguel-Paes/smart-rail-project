@@ -9,8 +9,8 @@ export const useWarningStore = defineStore('warnings', () => {
 
   const defaultWarning = ref({
     id: warningID.value,
-    message: 'A',
-    notificationType: ['TESTE'],
+    message: '',
+    notificationType: [],
     duration: {
       start: '',
       end: '',
@@ -33,11 +33,6 @@ export const useWarningStore = defineStore('warnings', () => {
     })
   }
 
-  function addWarning(warning) {
-    warnings.value.push(warning)
-    warningID.value += 1
-  }
-
   function removeWarning(id) {
     const removedWarning = warnings.value.find(warning => warning.id === id)
     if (removedWarning) {
@@ -46,5 +41,5 @@ export const useWarningStore = defineStore('warnings', () => {
     return removedWarning
   }
 
-  return { warnings, defaultWarning, addWarning, removeWarning, stationWarnings, addStationWarning, warningTypes }
+  return { warnings, defaultWarning, removeWarning, stationWarnings, addStationWarning, warningTypes }
 })
