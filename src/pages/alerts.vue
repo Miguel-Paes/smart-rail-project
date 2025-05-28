@@ -15,20 +15,16 @@
 
   const modal2 = ref(false)
 
-  function createWarning (warning) {
+  function createWarning () {
     dialog.value = false
-    if (warning.message === undefined) {
-      warning.message = 'Aviso sem mensagem'
+    if (newWarning.value.message === undefined) {
+      newWarning.value.message = 'Aviso sem mensagem'
     }
-    addWarning(warning)
-    newWarning.value = structuredClone(warningStore.defaultWarning.value)
-  }
-
-  function addWarning(warning) {
-    warningStore.warnings.push(warning)
+    warningStore.warnings.push({ ...newWarning.value })
     warningStore.warningID += 1
+    Object.assign(newWarning.value, warningStore.defaultWarning)
+    // newWarning.value = structuredClone(warningStore.defaultWarning)
   }
-
 </script>
 
 <template>
