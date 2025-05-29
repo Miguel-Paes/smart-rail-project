@@ -39,7 +39,7 @@
       >
         <template #activator="{ props: activatorProps }">
           <v-col class="d-flex justify-center mt-4 mb-4" cols="12" md="4" sm="6">
-            <v-btn class="w-50" v-bind="activatorProps" color="red-accent-3" variant="tonal">Criar Aviso</v-btn>
+            <v-btn class="w-100" v-bind="activatorProps" color="red-accent-3" variant="tonal">Criar Aviso</v-btn>
           </v-col>
         </template>
 
@@ -143,7 +143,7 @@
           </v-card-item>
 
           <v-card-item v-for="warning in warnings" :key="warning.id">
-            {{ warning.id }}. {{ warning.text }}
+            {{ warning.id }}. {{ warning.message }}
           </v-card-item>
         </v-card>
       </v-col>
@@ -157,7 +157,7 @@
           </v-card-item>
 
           <v-card-item v-for="warning in warnings" :key="warning.id">
-            {{ warning.id }}. {{ warning.text }}
+            {{ warning.id }}. {{ warning.message }}
           </v-card-item>
         </v-card>
       </v-col>
