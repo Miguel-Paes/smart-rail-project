@@ -16,7 +16,7 @@ export const useWarningStore = defineStore('warnings', () => {
       end: '',
     },
     station: '',
-    isFromUser: false,
+    isFromUser: true,
   })
 
   const warningTypes = ref([

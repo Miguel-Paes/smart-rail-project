@@ -143,7 +143,7 @@
           </v-card-item>
 
           <v-card-item v-for="warning in warnings" :key="warning.id">
-            {{ warning.id }}. {{ warning.text }}
+            {{ warning.id }}. {{ warning.message }}
           </v-card-item>
         </v-card>
       </v-col>
@@ -157,7 +157,7 @@
           </v-card-item>
 
           <v-card-item v-for="warning in warnings" :key="warning.id">
-            {{ warning.id }}. {{ warning.text }}
+            {{ warning.id }}. {{ warning.message }}
           </v-card-item>
         </v-card>
       </v-col>
