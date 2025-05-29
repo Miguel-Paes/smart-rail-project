@@ -13,5 +13,7 @@ export const useThemeStore = defineStore('theme', () => {
     isDark.value = !isDark.value
   }
 
+  const themeColor = ref('red')
+
   return { toggleTheme, isDark }
 })

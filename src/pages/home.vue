@@ -172,7 +172,7 @@
               <thead>
                 <tr>
                   <th class="text-left">Nome</th>
-                  <th class="text-left">Parada</th>
+                  <th class="text-left">Próx. Parada</th>
                   <th class="text-left">Destino Final</th>
                 </tr>
               </thead>
@@ -189,7 +189,7 @@
       </v-col>
 
       <v-col cols="12" md="6">
-        <v-card class="w-100 h-100 pa-2 border-red-accent-3 rounded rounded-lg" color="red-accent-3" variant="tonal">
+        <v-card class="w-100 h-100 pa-2 border-red-accent-3 rounded rounded-lg" color="default">
           <v-card-title class="text-center">AVISOS</v-card-title>
 
           <v-card-item>
@@ -197,7 +197,7 @@
           </v-card-item>
 
           <v-card-item v-for="warning in warnings" :key="warning.id">
-            {{ warning.id }}. {{ warning.text }}
+            {{ warning.id }}. {{ warning.message }}
           </v-card-item>
         </v-card>
       </v-col>
