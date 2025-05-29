@@ -10,100 +10,364 @@ import '@mdi/font/css/materialdesignicons.css'
 import 'vuetify/styles'
 
 // Composables
-import { createVuetify, useTheme } from 'vuetify'
+import { createVuetify } from 'vuetify'
 
-import { useThemeStore } from '@/stores/themeStore'
-
-const themeStore = useThemeStore()
 // https://vuetifyjs.com/en/introduction/why-vuetify/#feature-guides
-export default createVuetify({
-  if(themeStore.themeColor === 'red') {
+const vuetify = createVuetify({
   theme: {
-    defaultTheme: 'redDark';
+    defaultTheme: 'redDark',
     themes: {
-      redDark: {
-        dark: true;
-        colors: {
-          base: '#F44336';
-          lighten5: '#FFEBEE';
-          lighten4: '#FFCDD2';
-          lighten3: '#EF9A9A';
-          lighten2: '#E57373';
-          lighten1: '#EF5350';
-          darken1: '#E53935';
-          darken2: '#D32F2F';
-          darken3: '#C62828';
-          darken4: '#B71C1C';
-          accent1: '#FF8A80';
-          accent2: '#FF5252';
-          accent3: '#FF1744';
-          accent4: '#D50000';
-        };
-      };
-
       redLight: {
+        dark: false,
         colors: {
-          base: '#F44336';
-          lighten5: '#FFEBEE';
-          lighten4: '#FFCDD2';
-          lighten3: '#EF9A9A';
-          lighten2: '#E57373';
-          lighten1: '#EF5350';
-          darken1: '#E53935';
-          darken2: '#D32F2F';
-          darken3: '#C62828';
-          darken4: '#B71C1C';
-          accent1: '#FF8A80';
-          accent2: '#FF5252';
-          accent3: '#FF1744';
-          accent4: '#D50000';
-        };
-      };
-    };
-  };
-}
+          base: '#F44336',
+          lighten5: '#FFEBEE',
+          lighten4: '#FFCDD2',
+          lighten3: '#EF9A9A',
+          lighten2: '#E57373',
+          lighten1: '#EF5350',
+          darken1: '#E53935',
+          darken2: '#D32F2F',
+          darken3: '#C62828',
+          darken4: '#B71C1C',
+          accent1: '#FF8A80',
+          accent2: '#FF5252',
+          accent3: '#FF1744',
+          accent4: '#D50000',
+        },
+      },
+      redDark: {
+        dark: true,
+        colors: {
+          base: '#F44336',
+          lighten5: '#FFEBEE',
+          lighten4: '#FFCDD2',
+          lighten3: '#EF9A9A',
+          lighten2: '#E57373',
+          lighten1: '#EF5350',
+          darken1: '#E53935',
+          darken2: '#D32F2F',
+          darken3: '#C62828',
+          darken4: '#B71C1C',
+          accent1: '#FF8A80',
+          accent2: '#FF5252',
+          accent3: '#FF1744',
+          accent4: '#D50000',
+        },
+      },
+      yellowLight: {
+        dark: false,
+        colors: {
+          base: '#FFEB3B',
+          lighten5: '#FFFDE7',
+          lighten4: '#FFF9C4',
+          lighten3: '#FFF59D',
+          lighten2: '#FFF176',
+          lighten1: '#FFEE58',
+          darken1: '#FDD835',
+          darken2: '#FBC02D',
+          darken3: '#F9A825',
+          darken4: '#F57F17',
+          accent1: '#FFFF8D',
+          accent2: '#FFFF00',
+          accent3: '#FFEA00',
+          accent4: '#FFD600',
+        },
+      },
+      yellowDark: {
+        dark: true,
+        colors: {
+          base: '#FFEB3B',
+          lighten5: '#FFFDE7',
+          lighten4: '#FFF9C4',
+          lighten3: '#FFF59D',
+          lighten2: '#FFF176',
+          lighten1: '#FFEE58',
+          darken1: '#FDD835',
+          darken2: '#FBC02D',
+          darken3: '#F9A825',
+          darken4: '#F57F17',
+          accent1: '#FFFF8D',
+          accent2: '#FFFF00',
+          accent3: '#FFEA00',
+          accent4: '#FFD600',
+        },
+      },
 
-if (themeStore.themeColor === 'yellow') {
-  themes: {
-    yellowDark: {
-      dark: true;
-      colors: {
-        base: '#FFEB3B';
-        lighten5: '#FFFDE7';
-        lighten4: '#FFF9C4';
-        lighten3: '#FFF59D';
-        lighten2: '#FFF176';
-        lighten1: '#FFEE58';
-        darken1: '#FDD835';
-        darken2: '#FBC02D';
-        darken3: '#F9A825';
-        darken4: '#F57F17';
-        accent1: '#FFFF8D';
-        accent2: '#FFFF00';
-        accent3: '#FFEA00';
-        accent4: '#FFD600';
-      };
-    };
-  };
-  yellowLight: {
-    colors: {
-      base: '#FFEB3B';
-      lighten5: '#FFFDE7';
-      lighten4: '#FFF9C4';
-      lighten3: '#FFF59D';
-      lighten2: '#FFF176';
-      lighten1: '#FFEE58';
-      darken1: '#FDD835';
-      darken2: '#FBC02D';
-      darken3: '#F9A825';
-      darken4: '#F57F17';
-      accent1: '#FFFF8D';
-      accent2: '#FFFF00';
-      accent3: '#FFEA00';
-      accent4: '#FFD600';
-    };
-  };
-};
-};
-  }
+      brownLight: {
+        dark: false,
+        colors: {
+          base: '#795548',
+          lighten5: '#EFEBE9',
+          lighten4: '#D7CCC8',
+          lighten3: '#BCAAA4',
+          lighten2: '#A1887F',
+          lighten1: '#8D6E63',
+          darken1: '#6D4C41',
+          darken2: '#5D4037',
+          darken3: '#4E342E',
+          darken4: '#3E2723',
+          accent1: '#D7CCC8',
+          accent2: '#A1887F',
+          accent3: '#6D4C41',
+          accent4: '#3E2723',
+        },
+      },
+      brownDark: {
+        dark: true,
+        colors: {
+          base: '#795548',
+          lighten5: '#EFEBE9',
+          lighten4: '#D7CCC8',
+          lighten3: '#BCAAA4',
+          lighten2: '#A1887F',
+          lighten1: '#8D6E63',
+          darken1: '#6D4C41',
+          darken2: '#5D4037',
+          darken3: '#4E342E',
+          darken4: '#3E2723',
+          accent1: '#D7CCC8',
+          accent2: '#A1887F',
+          accent3: '#6D4C41',
+          accent4: '#3E2723',
+        },
+      },
+
+      blueLight: {
+        dark: false,
+        colors: {
+          base: '#2196F3',
+          lighten5: '#E3F2FD',
+          lighten4: '#BBDEFB',
+          lighten3: '#90CAF9',
+          lighten2: '#64B5F6',
+          lighten1: '#42A5F5',
+          darken1: '#1E88E5',
+          darken2: '#1976D2',
+          darken3: '#1565C0',
+          darken4: '#0D47A1',
+          accent1: '#82B1FF',
+          accent2: '#448AFF',
+          accent3: '#2979FF',
+          accent4: '#2962FF',
+        },
+      },
+      blueDark: {
+        dark: true,
+        colors: {
+          base: '#2196F3',
+          lighten5: '#E3F2FD',
+          lighten4: '#BBDEFB',
+          lighten3: '#90CAF9',
+          lighten2: '#64B5F6',
+          lighten1: '#42A5F5',
+          darken1: '#1E88E5',
+          darken2: '#1976D2',
+          darken3: '#1565C0',
+          darken4: '#0D47A1',
+          accent1: '#82B1FF',
+          accent2: '#448AFF',
+          accent3: '#2979FF',
+          accent4: '#2962FF',
+        },
+      },
+      greenLight: {
+        dark: false,
+        colors: {
+          base: '#4CAF50',
+          lighten5: '#E8F5E9',
+          lighten4: '#C8E6C9',
+          lighten3: '#A5D6A7',
+          lighten2: '#81C784',
+          lighten1: '#66BB6A',
+          darken1: '#43A047',
+          darken2: '#388E3C',
+          darken3: '#2E7D32',
+          darken4: '#1B5E20',
+          accent1: '#B9F6CA',
+          accent2: '#69F0AE',
+          accent3: '#00E676',
+          accent4: '#00C853',
+        },
+      },
+      greenDark: {
+        dark: true,
+        colors: {
+          base: '#4CAF50',
+          lighten5: '#E8F5E9',
+          lighten4: '#C8E6C9',
+          lighten3: '#A5D6A7',
+          lighten2: '#81C784',
+          lighten1: '#66BB6A',
+          darken1: '#43A047',
+          darken2: '#388E3C',
+          darken3: '#2E7D32',
+          darken4: '#1B5E20',
+          accent1: '#B9F6CA',
+          accent2: '#69F0AE',
+          accent3: '#00E676',
+          accent4: '#00C853',
+        },
+      },
+
+      purpleLight: {
+        dark: false,
+        colors: {
+          base: '#673AB7',
+          lighten5: '#EDE7F6',
+          lighten4: '#D1C4E9',
+          lighten3: '#B39DDB',
+          lighten2: '#9575CD',
+          lighten1: '#7E57C2',
+          darken1: '#5E35B1',
+          darken2: '#512DA8',
+          darken3: '#4527A0',
+          darken4: '#311B92',
+          accent1: '#B388FF',
+          accent2: '#7C4DFF',
+          accent3: '#651FFF',
+          accent4: '#6200EA',
+        },
+      },
+      purpleDark: {
+        dark: true,
+        colors: {
+          base: '#673AB7',
+          lighten5: '#EDE7F6',
+          lighten4: '#D1C4E9',
+          lighten3: '#B39DDB',
+          lighten2: '#9575CD',
+          lighten1: '#7E57C2',
+          darken1: '#5E35B1',
+          darken2: '#512DA8',
+          darken3: '#4527A0',
+          darken4: '#311B92',
+          accent1: '#B388FF',
+          accent2: '#7C4DFF',
+          accent3: '#651FFF',
+          accent4: '#6200EA',
+        },
+      },
+
+      pinkLight: {
+        dark: false,
+        colors: {
+          base: '#E91E63',
+          lighten5: '#FCE4EC',
+          lighten4: '#F8BBD0',
+          lighten3: '#F48FB1',
+          lighten2: '#F06292',
+          lighten1: '#EC407A',
+          darken1: '#D81B60',
+          darken2: '#C2185B',
+          darken3: '#AD1457',
+          darken4: '#880E4F',
+          accent1: '#FF80AB',
+          accent2: '#FF4081',
+          accent3: '#F50057',
+          accent4: '#C51162',
+        },
+      },
+      pinkDark: {
+        dark: true,
+        colors: {
+          base: '#E91E63',
+          lighten5: '#FCE4EC',
+          lighten4: '#F8BBD0',
+          lighten3: '#F48FB1',
+          lighten2: '#F06292',
+          lighten1: '#EC407A',
+          darken1: '#D81B60',
+          darken2: '#C2185B',
+          darken3: '#AD1457',
+          darken4: '#880E4F',
+          accent1: '#FF80AB',
+          accent2: '#FF4081',
+          accent3: '#F50057',
+          accent4: '#C51162',
+        },
+      },
+
+      cyanLight: {
+        dark: false,
+        colors: {
+          base: '#00BCD4',
+          lighten5: '#E0F7FA',
+          lighten4: '#B2EBF2',
+          lighten3: '#80DEEA',
+          lighten2: '#4DD0E1',
+          lighten1: '#26C6DA',
+          darken1: '#00ACC1',
+          darken2: '#0097A7',
+          darken3: '#00838F',
+          darken4: '#006064',
+          accent1: '#84FFFF',
+          accent2: '#18FFFF',
+          accent3: '#00E5FF',
+          accent4: '#00B8D4',
+        },
+      },
+      cyanDark: {
+        dark: true,
+        colors: {
+          base: '#00BCD4',
+          lighten5: '#E0F7FA',
+          lighten4: '#B2EBF2',
+          lighten3: '#80DEEA',
+          lighten2: '#4DD0E1',
+          lighten1: '#26C6DA',
+          darken1: '#00ACC1',
+          darken2: '#0097A7',
+          darken3: '#00838F',
+          darken4: '#006064',
+          accent1: '#84FFFF',
+          accent2: '#18FFFF',
+          accent3: '#00E5FF',
+          accent4: '#00B8D4',
+        },
+      },
+
+      orangeLight: {
+        dark: false,
+        colors: {
+          base: '#FF5722',
+          lighten5: '#FBE9E7',
+          lighten4: '#FFCCBC',
+          lighten3: '#FFAB91',
+          lighten2: '#FF8A65',
+          lighten1: '#FF7043',
+          darken1: '#F4511E',
+          darken2: '#E64A19',
+          darken3: '#D84315',
+          darken4: '#BF360C',
+          accent1: '#FF9E80',
+          accent2: '#FF6E40',
+          accent3: '#FF3D00',
+          accent4: '#DD2C00',
+        },
+      },
+      orangeDark: {
+        dark: true,
+        colors: {
+          base: '#FF5722',
+          lighten5: '#FBE9E7',
+          lighten4: '#FFCCBC',
+          lighten3: '#FFAB91',
+          lighten2: '#FF8A65',
+          lighten1: '#FF7043',
+          darken1: '#F4511E',
+          darken2: '#E64A19',
+          darken3: '#D84315',
+          darken4: '#BF360C',
+          accent1: '#FF9E80',
+          accent2: '#FF6E40',
+          accent3: '#FF3D00',
+          accent4: '#DD2C00',
+        },
+      },
+
+    },
+  },
 })
+
+export default vuetify

@@ -81,7 +81,7 @@
                 <v-btn
                   class="pa-2 d-flex align-center h-50 text-no-wrap"
                   :class="$vuetify.display.mobile ? 'w-100 h-100' : 'h-50 w-100' "
-                  color="red-accent-3"
+                  color="accent3"
                   v-bind="activatorProps"
                   variant="tonal"
                 >
@@ -123,7 +123,7 @@
                               v-if="menu2"
                               v-model="stationStore.userLocation.departureTime"
                               ampm-in-title="true"
-                              color="red-accent-3"
+                              color="accent3"
                               full-width
                               scrollable="true"
                             />
@@ -153,7 +153,7 @@
                     </v-row>
 
                     <v-row class="d-flex justify-center">
-                      <v-btn color="red-accent-3" variant="tonal" @click="isActive.value = false">
+                      <v-btn color="accent3" variant="tonal" @click="isActive.value = false">
                         Descobrir estação
                       </v-btn>
                     </v-row>
@@ -189,7 +189,7 @@
       </v-col>
 
       <v-col cols="12" md="6">
-        <v-card class="w-100 h-100 pa-2 border-red-accent-3 rounded rounded-lg" color="default">
+        <v-card class="w-100 h-100 pa-2 rounded rounded-lg" color="accent3" variant="tonal">
           <v-card-title class="text-center">AVISOS</v-card-title>
 
           <v-card-item>
@@ -204,9 +204,3 @@
     </v-row>
   </v-main>
 </template>
-
-<style>
-  .border-red-accent-3 {
-  border: solid .1rem #FF1744;
-}
-</style>
