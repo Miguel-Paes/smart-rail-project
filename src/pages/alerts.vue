@@ -28,8 +28,8 @@
 </script>
 
 <template>
-  <v-main class="pa-0 pt-1" :class="$vuetify.display.mobile ? 'px-3' : 'px-7'">
-    <h2 class="mb-3" :class="$vuetify.display.mobile ? '' : 'text-h4 font-weight-bold'">Alertas e Notificações</h2>
+  <v-main class="pa-0 pt-5" :class="$vuetify.display.mobile ? 'px-3' : 'px-7'">
+    <h2 class="mb-3" :class="$vuetify.display.mobile ? '' : 'text-h3 font-weight-regular'">Alertas e Notificações</h2>
 
     <v-row class="d-flex justify-center">
       <v-dialog
@@ -39,22 +39,22 @@
       >
         <template #activator="{ props: activatorProps }">
           <v-col class="d-flex justify-center mt-4 mb-4" cols="12" md="4" sm="6">
-            <v-btn class="w-100" v-bind="activatorProps" color="red-accent-3" variant="tonal">Criar Aviso</v-btn>
+            <v-btn class="w-100" v-bind="activatorProps" color="accent3" variant="tonal">Criar Aviso</v-btn>
           </v-col>
         </template>
 
         <v-card class="pa-12">
-          <v-card-title class="text-red-accent-3">Criar Aviso</v-card-title>
+          <v-card-title class="text-accent3">Criar Aviso</v-card-title>
 
           <v-form>
             <v-row>
               <v-col cols="12" sm="6">
-                <v-text-field v-model="newWarning.message" class="text-red-accent-3" label="Mensagem" variant="underlined" />
+                <v-text-field v-model="newWarning.message" class="text-accent3" label="Mensagem" variant="underlined" />
               </v-col>
               <v-col cols="12" sm="6">
                 <v-select
                   v-model="newWarning.notificationType"
-                  class="text-red-accent-3"
+                  class="text-accent3"
                   item-value="item"
                   :items="warningStore.warningTypes"
                   label="Tipo de Aviso"
@@ -68,7 +68,7 @@
               <v-col cols="12" sm="6">
                 <v-select
                   v-model="newWarning.station"
-                  class="text-red-accent-3"
+                  class="text-accent3"
                   item-title="name"
                   item-value="id"
                   :items="stationStore.stations"
@@ -79,7 +79,7 @@
               <v-col cols="12" sm="6">
                 <v-text-field
                   :active="modal2"
-                  class="text-red-accent-3"
+                  class="text-accent3"
                   :focused="modal2"
                   :label="newWarning.duration.start === null && newWarning.duration.end === null ? 'Definir Duração' : `Início: ${newWarning.duration.start} - Término: ${newWarning.duration.end}`"
                   readonly
@@ -102,7 +102,7 @@
                             v-if="modal2"
                             v-model="newWarning.duration.start"
                             ampm-in-title
-                            color="red-accent-3"
+                            class="text-accent3"
                             title="Horário de Início"
                           />
                         </v-col>
@@ -111,7 +111,7 @@
                             v-if="modal2"
                             v-model="newWarning.duration.end"
                             ampm-in-title
-                            color="red-accent-3"
+                            color="accent3"
                             title="Horário de Término"
                           />
                         </v-col>
@@ -125,7 +125,7 @@
 
             <v-row class="d-flex justify-center">
               <v-col cols="12" md="2" sm="6">
-                <v-btn class="w-100" color="red-accent-3" variant="tonal" @click="createWarning(newWarning)">Criar aviso</v-btn>
+                <v-btn class="w-100" color="accent3" variant="tonal" @click="createWarning(newWarning)">Criar aviso</v-btn>
               </v-col>
             </v-row>
           </v-form>
@@ -135,7 +135,7 @@
 
     <v-row>
       <v-col cols="12" md="6">
-        <v-card class="w-100 h-100 pa-2 border-red-accent-3 rounded rounded-lg" color="red-accent-3" variant="tonal">
+        <v-card class="w-100 h-100 pa-2 border-red-accent-3 rounded rounded-lg" color="accent3" variant="tonal">
           <v-card-title class="text-center">AVISOS DA COMUNIDADE</v-card-title>
 
           <v-card-item>
@@ -149,7 +149,7 @@
       </v-col>
 
       <v-col cols="12" md="6">
-        <v-card class="w-100 h-100 pa-2 border-red-accent-3 rounded rounded-lg" color="red-accent-3" variant="tonal">
+        <v-card class="w-100 h-100 pa-2 border-red-accent-3 rounded rounded-lg" color="accent3" variant="tonal">
           <v-card-title class="text-center">AVISOS POSTADOS</v-card-title>
 
           <v-card-item>
