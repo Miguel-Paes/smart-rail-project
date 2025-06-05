@@ -103,6 +103,7 @@
                             v-model="newWarning.duration.start"
                             ampm-in-title
                             class="text-accent3"
+                            color="accent3"
                             title="Horário de Início"
                           />
                         </v-col>
@@ -111,6 +112,7 @@
                             v-if="modal2"
                             v-model="newWarning.duration.end"
                             ampm-in-title
+                            class="text-accent3"
                             color="accent3"
                             title="Horário de Término"
                           />

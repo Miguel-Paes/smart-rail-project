@@ -119,7 +119,7 @@
         <v-card-title>MUDAR COR DO TEMA</v-card-title>
         <v-divider color="accent-3 mb-5" />
         <v-row class="d-flex">
-          <v-col cols="12" md="4" sm="6">
+          <v-col class="pa-0 h-0 mb-2" cols="12" md="4" sm="6">
             <v-select
               v-model="themeStore.themeColor"
               item-title="name"
@@ -128,20 +128,29 @@
               label="Cor do tema:"
             />
           </v-col>
-          <v-col cols="12" md="4" sm="6">
+          <v-col class="pa-0 h-0 mb-2" cols="12" md="4" sm="6">
             <v-switch
               v-model="themeStore.isDark"
+              color="lighten1"
               :label="themeStore.isDark ? 'Tema Escuro' : 'Tema Claro'"
               @click="themeStore.toggleTheme()"
             />
           </v-col>
-          <v-col cols="12" md="4" sm="6">
+          <v-col class="pa-0 h-0 mb-2" cols="12" md="4" sm="6">
             <v-btn
               class="w-100"
               color="base"
               text="exemplo"
             />
           </v-col>
+        </v-row>
+
+        <v-row>
+          <v-card>
+            <v-card-title>
+              Demonstração
+            </v-card-title>
+          </v-card>
         </v-row>
       </v-card>
     </v-dialog>
