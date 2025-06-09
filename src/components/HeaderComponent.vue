@@ -1,15 +1,16 @@
 <script setup>
   import { ref, watch } from 'vue'
   import { useRouter } from 'vue-router'
-
-  import { useThemeStore } from '@/stores/themeStore'
   import { useTheme } from 'vuetify'
+  
+  import { useThemeStore } from '@/stores/themeStore'
+  import { useDisplayStore } from '@/stores/displayStore.js'
 
-  const router = useRouter()
 
+  const displayStore = useDisplayStore()
   const themeStore = useThemeStore()
   const theme = useTheme()
-
+  const router = useRouter()
 
   const colors = ref([
     {
@@ -161,7 +162,7 @@
 
   <v-navigation-drawer
     v-model="drawer"
-    :location="$vuetify.display.mobile ? 'bottom' : undefined"
+    :location="displayStore.xs ? 'top' : undefined"
     temporary
   >
     <v-list>
