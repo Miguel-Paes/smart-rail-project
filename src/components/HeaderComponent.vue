@@ -97,7 +97,7 @@
 </script>
 
 <template>
-  <v-app-bar>
+  <v-app-bar color="darken4">
     <v-app-bar-nav-icon variant="text" @click.stop="drawer = !drawer" />
 
     <v-toolbar-title>Smart Rail</v-toolbar-title>
@@ -109,7 +109,7 @@
     >
       <template #activator="{ props: activatorProps }">
         <v-btn
-          class=" rounded-circle border-md"
+          class="bg-lighten5 rounded-circle border-md"
           color="accent3"
           icon="bi bi-circle-half"
           v-bind="activatorProps"

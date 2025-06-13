@@ -36,10 +36,6 @@ export const useStationStore = defineStore('station', () => {
     selectedLine.value = { ...index }
   }
 
-  function getSelectedLineDriver(driver) {
-    selectedLine.value.driver = driver
-  }
-
   function selectStationInRoutes(id) {
     getSelectedLine(id)
     getStationLines(id)
@@ -91,5 +87,5 @@ export const useStationStore = defineStore('station', () => {
       ],
     },
   ])
-  return { stations, userLocation, stationLines, getStationLines, stationId, getSelectedLine, selectedLine, selectStationInRoutes, getSelectedLineDriver }
+  return { stations, userLocation, stationLines, getStationLines, stationId, getSelectedLine, selectedLine, selectStationInRoutes }
 })
