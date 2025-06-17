@@ -1,6 +1,6 @@
 // Utilities
 import { defineStore } from 'pinia'
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 
 export const useStationStore = defineStore('station', () => {
 
@@ -23,7 +23,10 @@ export const useStationStore = defineStore('station', () => {
   });
 
   const stationId = ref(null);
-  const stationLines = ref(null)
+  const stationLines = computed(() => {
+    const res = allLines.value.find(station => station.id == stationId.value).lines
+    return res
+  })
   const selectedLine = ref(null)
 
   function getStationLines(stationId) {
@@ -91,5 +94,15 @@ export const useStationStore = defineStore('station', () => {
       ],
     },
   ])
-  return { stations, userLocation, stationLines, getStationLines, stationId, getSelectedLine, selectedLine, selectStationInRoutes, getSelectedLineDriver }
+  return {
+    stations,
+    userLocation,
+    stationLines,
+    stationId,
+    selectedLine,
+    getStationLines,
+    getSelectedLine,
+    selectStationInRoutes,
+    getSelectedLineDriver,
+  }
 })
