@@ -39,10 +39,6 @@ export const useStationStore = defineStore('station', () => {
     selectedLine.value = { ...index }
   }
 
-  function getSelectedLineDriver(driver) {
-    selectedLine.value.driver = driver
-  }
-
   function selectStationInRoutes(id) {
     getSelectedLine(id)
     getStationLines(id)
@@ -94,6 +90,7 @@ export const useStationStore = defineStore('station', () => {
       ],
     },
   ])
+<<<<<<< HEAD
   return {
     stations,
     userLocation,
@@ -105,4 +102,7 @@ export const useStationStore = defineStore('station', () => {
     selectStationInRoutes,
     getSelectedLineDriver,
   }
+=======
+  return { stations, userLocation, stationLines, getStationLines, stationId, getSelectedLine, selectedLine, selectStationInRoutes }
+>>>>>>> refs/remotes/origin/main
 })
