@@ -24,7 +24,7 @@ export const useStationStore = defineStore('station', () => {
 
   const stationId = ref(null);
   const stationLines = computed(() => {
-    const res = allLines.value.find(station => station.id == stationId.value).lines
+    const res = allLines.value.find(station => station.id == stationId.value)?.lines || null
     return res
   })
   const selectedLine = ref(null)
@@ -90,7 +90,6 @@ export const useStationStore = defineStore('station', () => {
       ],
     },
   ])
-<<<<<<< HEAD
   return {
     stations,
     userLocation,
@@ -100,9 +99,5 @@ export const useStationStore = defineStore('station', () => {
     getStationLines,
     getSelectedLine,
     selectStationInRoutes,
-    getSelectedLineDriver,
   }
-=======
-  return { stations, userLocation, stationLines, getStationLines, stationId, getSelectedLine, selectedLine, selectStationInRoutes }
->>>>>>> refs/remotes/origin/main
 })

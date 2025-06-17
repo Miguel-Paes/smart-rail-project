@@ -9,7 +9,6 @@
   const stationStore = useStationStore()
   const displayStore = useDisplayStore()
   const warningStore = useWarningStore()
-
   const warnings = ref(warningStore.warnings)
 
   const userLocation = ref(stationStore.userLocation)

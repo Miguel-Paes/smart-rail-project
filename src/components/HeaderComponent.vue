@@ -2,10 +2,9 @@
   import { ref, watch } from 'vue'
   import { useRouter } from 'vue-router'
   import { useTheme } from 'vuetify'
-  
+
   import { useThemeStore } from '@/stores/themeStore'
   import { useDisplayStore } from '@/stores/displayStore.js'
-
 
   const displayStore = useDisplayStore()
   const themeStore = useThemeStore()
@@ -51,6 +50,19 @@
     },
   ])
 
+  const gifMap = ref({
+    red: '/images/red.gif',
+    yellow: '/images/yellow.gif',
+    brown: '/images/brown.gif',
+    blue: '/images/blue.gif',
+    green: '/images/green.gif',
+    purple: '/images/purple.gif',
+    pink: '/images/pink.gif',
+    cyan: '/images/cyan.gif',
+    orange: '/images/orange.gif',
+  })
+
+
   watch(() => themeStore.themeColor, newColor => {
     const isDark = themeStore.isDark
     theme.global.name.value = `${newColor}${isDark ? 'Dark' : 'Light'}`
@@ -63,6 +75,14 @@
     },
     { immediate: true }
   )
+
+  const currentGif = computed(() => {
+    const color = themeStore.themeColor?.toLowerCase()
+    console.log(color)
+    return validThemes.includes(color)
+      ? gifMap[color]
+      : `/images/${color}.gif` // caso você tenha um fallback
+  })
 
   const themeDialog = ref(false)
 
@@ -94,6 +114,7 @@
   }
 
   const drawer = ref(false)
+  const validThemes = Object.keys(gifMap)
 </script>
 
 <template>
@@ -162,14 +183,37 @@
   </v-app-bar>
 
   <v-navigation-drawer
+    v-if="!displayStore.xs"
     v-model="drawer"
-    :location="displayStore.xs ? 'top' : undefined"
     temporary
   >
+    <v-img
+      :src="currentGif"
+      @error="handleImageError"
+    />
     <v-list>
       <v-list-item v-for="item in items" :key="item.title" @click="alterPage(item.value)">
         {{ item.title }}
       </v-list-item>
     </v-list>
+  </v-navigation-drawer>
+
+  <v-navigation-drawer
+    v-if="displayStore.xs"
+    v-model="drawer"
+    location="top"
+    temporary
+  >
+    <v-img
+      :src="currentGif"
+      @error="handleImageError"
+    >
+
+      <v-list>
+        <v-list-item v-for="item in items" :key="item.title" @click="alterPage(item.value)">
+          {{ item.title }}
+        </v-list-item>
+      </v-list>
+    </v-img>
   </v-navigation-drawer>
 </template>
