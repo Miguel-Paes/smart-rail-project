@@ -8,6 +8,7 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    FindStationDialog: typeof import('./src/components/home/FindStationDialog.vue')['default']
     HeaderComponent: typeof import('./src/components/HeaderComponent.vue')['default']
     LineOptions: typeof import('./src/components/template/RoutesPage/LineOptions.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
