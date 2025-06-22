@@ -1,6 +1,6 @@
 <script setup>
-  import { VTimePicker } from 'vuetify/labs/VTimePicker'
   import { ref } from 'vue';
+  import { VTimePicker } from 'vuetify/labs/VTimePicker'
 
   import { useStationStore } from '@/stores/stationStore.js'
 
@@ -8,8 +8,8 @@
 
   const menu2 = ref(false)
   const userLocation = ref(stationStore.userLocation)
+  const states = ref(['AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO']);
 
-  const states = ref(['AC', 'AL', 'Ap', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO']);
 
   const cep = ref(stationStore.userLocation.cep);
 

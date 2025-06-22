@@ -1,22 +1,18 @@
   <script setup>
-  import { ref } from 'vue';
-
   import { useStationStore } from '@/stores/stationStore.js'
   import { useDisplayStore } from '@/stores/displayStore.js'
   import { useWarningStore } from '@/stores/warningsStore';
+  
   import FindStationDialog from '@/components/home/FindStationDialog.vue';
   import WarningsList from '@/components/template/WarningsList.vue';
 
   const stationStore = useStationStore()
   const displayStore = useDisplayStore()
   const warningStore = useWarningStore()
-  const warnings = ref(warningStore.warnings)
-  </script>
+</script>
 
 <template>
-  <v-main class="pa-0 pt-5" :class="displayStore.xs ? 'px-3 py-1' : displayStore.sm ? 'px-5 py-2' : 'px-7 py-3'">
     <h2 class="mb-3 font-weight-regular" :class="displayStore.xs ? 'text-h6' : displayStore.sm ? 'text-h5' : 'text-h4'">Dashboard Geral</h2>
-
     <v-row class="d-flex">
       <v-col class="d-flex flex-column justify-center" cols="12" md="6">
         <v-row class="d-flex" :class="displayStore.xs ? '' : displayStore.sm ? '' : 'ga-3'" dense>
@@ -68,10 +64,8 @@
 
       <v-col cols="12" md="6">
         <WarningsList
-          :forItems="warnings"
-          title="Avisos"
+          :items="warningStore.warnings"
         />
       </v-col>
     </v-row>
-  </v-main>
 </template>

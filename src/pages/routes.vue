@@ -1,7 +1,7 @@
 <script setup>
   import TitleSection from '@/components/template/TitleSection.vue';
-  import LineOptions from '@/components/template/RoutesPage/LineOptions.vue';
-  import StationOptions from '@/components/template/RoutesPage/StationOptions.vue';
+  import LineOptions from '@/components/RoutesPage/LineOptions.vue';
+  import StationOptions from '@/components/RoutesPage/StationOptions.vue';
   import { useDisplayStore } from '@/stores/displayStore';
 
   const displayStore = useDisplayStore()
@@ -27,13 +27,11 @@
         <v-tabs-window v-model="tabs">
           <v-tabs-window-item value="line">
             <title-section subtitle="Definir Linha para Editar" />
-
             <LineOptions />
           </v-tabs-window-item>
 
           <v-tabs-window-item value="station">
             <title-section subtitle="Definir Estação para Editar" />
-
             <StationOptions />
           </v-tabs-window-item>
         </v-tabs-window></v-card-text></v-card>

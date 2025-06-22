@@ -1,1 +1,1 @@
-export { default } from 'eslint-config-vuetify'
+// export { default } from 'eslint-config-vuetify'

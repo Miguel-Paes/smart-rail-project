@@ -1,5 +1,14 @@
 <script setup>
-  defineProps(['title', 'forItems'])
+  defineProps({
+    title: {
+      type: String,
+      default: 'Avisos'
+    },
+    items: {
+      type: Array,
+      default: () => []
+    }
+  })
 </script>
 
 <template>
@@ -7,10 +16,10 @@
     <v-card-title class="text-center">{{ title }}</v-card-title>
 
     <v-card-item>
-      {{ forItems.length === 0 ? 'Nenhum aviso' : '' }}
+      {{ items.length === 0 ? 'Nenhum aviso' : '' }}
     </v-card-item>
 
-    <v-card-item v-for="item in forItems" :key="item.id">
+    <v-card-item v-for="item in items" :key="item.id">
       {{ item.id }}. {{ item.message }}
     </v-card-item>
   </v-card>
