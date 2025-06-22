@@ -9,6 +9,7 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     AccentList: typeof import('./src/components/template/WarningsList.vue')['default']
+    CreateAlertForm: typeof import('./src/components/AlertsPage/CreateAlertForm.vue')['default']
     FindStationDialog: typeof import('./src/components/home/FindStationDialog.vue')['default']
     HeaderComponent: typeof import('./src/components/HeaderComponent.vue')['default']
     LineOptions: typeof import('./src/components/RoutesPage/LineOptions.vue')['default']
