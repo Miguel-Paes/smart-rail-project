@@ -5,6 +5,7 @@
   import { useWarningStore } from '@/stores/warningsStore';
   import { useStationStore } from '@/stores/stationStore';
   import { useDisplayStore } from '@/stores/displayStore';
+  import WarningsList from '@/components/template/WarningsList.vue';
 
   const warningStore = useWarningStore();
   const stationStore = useStationStore();
@@ -140,31 +141,17 @@
 
     <v-row>
       <v-col cols="12" md="6">
-        <v-card class="w-100 h-100 pa-2 border-red-accent-3 rounded rounded-lg" color="accent3" variant="tonal">
-          <v-card-title class="text-center">AVISOS DA COMUNIDADE</v-card-title>
-
-          <v-card-item>
-            {{ warnings.length === 0 ? 'Nenhum aviso' : '' }}
-          </v-card-item>
-
-          <v-card-item v-for="warning in warnings" :key="warning.id">
-            {{ warning.id }}. {{ warning.message }}
-          </v-card-item>
-        </v-card>
+        <WarningsList
+          :forItems="warnings"
+          title="Avisos da Comunidade"
+        />
       </v-col>
 
       <v-col cols="12" md="6">
-        <v-card class="w-100 h-100 pa-2 border-red-accent-3 rounded rounded-lg" color="accent3" variant="tonal">
-          <v-card-title class="text-center">AVISOS POSTADOS</v-card-title>
-
-          <v-card-item>
-            {{ warnings.length === 0 ? 'Nenhum aviso' : '' }}
-          </v-card-item>
-
-          <v-card-item v-for="warning in warnings" :key="warning.id">
-            {{ warning.id }}. {{ warning.message }}
-          </v-card-item>
-        </v-card>
+        <WarningsList
+          :forItems="warnings"
+          title="Avisos"
+        />
       </v-col>
     </v-row>
   </v-main>

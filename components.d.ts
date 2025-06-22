@@ -8,12 +8,14 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    AccentList: typeof import('./src/components/template/WarningsList.vue')['default']
     FindStationDialog: typeof import('./src/components/home/FindStationDialog.vue')['default']
     HeaderComponent: typeof import('./src/components/HeaderComponent.vue')['default']
-    LineOptions: typeof import('./src/components/template/RoutesPage/LineOptions.vue')['default']
+    LineOptions: typeof import('./src/components/RoutesPage/LineOptions.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    StationOptions: typeof import('./src/components/template/RoutesPage/StationOptions.vue')['default']
+    StationOptions: typeof import('./src/components/RoutesPage/StationOptions.vue')['default']
     TitleSection: typeof import('./src/components/template/TitleSection.vue')['default']
+    WarningsList: typeof import('./src/components/template/WarningsList.vue')['default']
   }
 }

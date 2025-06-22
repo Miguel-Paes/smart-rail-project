@@ -5,6 +5,7 @@
   import { useDisplayStore } from '@/stores/displayStore.js'
   import { useWarningStore } from '@/stores/warningsStore';
   import FindStationDialog from '@/components/home/FindStationDialog.vue';
+  import WarningsList from '@/components/template/WarningsList.vue';
 
   const stationStore = useStationStore()
   const displayStore = useDisplayStore()
@@ -66,17 +67,10 @@
       </v-col>
 
       <v-col cols="12" md="6">
-        <v-card class="w-100 h-100 pa-2 rounded rounded-lg" color="accent3" variant="tonal">
-          <v-card-title class="text-center">AVISOS</v-card-title>
-
-          <v-card-item>
-            {{ warnings.length === 0 ? 'Nenhum aviso' : '' }}
-          </v-card-item>
-
-          <v-card-item v-for="warning in warnings" :key="warning.id">
-            {{ warning.id }}. {{ warning.message }}
-          </v-card-item>
-        </v-card>
+        <WarningsList
+          :forItems="warnings"
+          title="Avisos"
+        />
       </v-col>
     </v-row>
   </v-main>
