@@ -3,8 +3,10 @@
   import LineOptions from '@/components/RoutesPage/LineOptions.vue';
   import StationOptions from '@/components/RoutesPage/StationOptions.vue';
   import { useDisplayStore } from '@/stores/displayStore';
+  import { useThemeStore } from '@/stores/themeStore';
 
   const displayStore = useDisplayStore()
+  const themeStore = useThemeStore()
 
   const tabs = ref(null)
 
@@ -17,7 +19,7 @@
     <v-card>
       <v-tabs
         v-model="tabs"
-        bg-color="lighten1"
+        :bg-color="themeStore.isDark ? 'darken1' : 'lighten1'"
       >
         <v-tab value="line">Editar Linha</v-tab>
         <v-tab value="station">Editar Estação</v-tab>
