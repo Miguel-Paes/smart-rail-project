@@ -2,8 +2,10 @@
   import { ref } from 'vue';
 
   import { useStationStore } from '@/stores/stationStore';
+  import { useUserStore } from '@/stores/userStore';
 
   const stationStore = useStationStore()
+  const userStore = useUserStore()
 
   const expansionPanels = ref(false)
 

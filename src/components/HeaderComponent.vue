@@ -119,7 +119,13 @@
 
 <template>
   <v-app-bar color="darken4">
-    <v-app-bar-nav-icon variant="text" @click.stop="drawer = !drawer" />
+      <v-img
+        src="/images/background_img.png"
+        max-height="50"
+        max-width="50"
+        class="ml-2"
+        @click.stop="drawer = !drawer"
+      />
 
     <v-toolbar-title>Smart Rail</v-toolbar-title>
 
