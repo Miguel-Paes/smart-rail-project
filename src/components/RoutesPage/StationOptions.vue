@@ -65,7 +65,7 @@
   </v-row>
 
   <v-row>
-    <v-expansion-panels :disabled="expansionPanels === false">
+    <v-expansion-panels class="py-5 px-1" :disabled="expansionPanels === false">
       <v-expansion-panel>
         <v-expansion-panel-title>
           <template #default="{}">
