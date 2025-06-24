@@ -47,7 +47,7 @@
   <v-dialog>
     <template #activator="{ props: activatorProps }">
       <v-btn
-        class="pa-2 d-flex align-center h-50 text-no-wrap"
+        class="py-2 px-4 d-flex align-center h-50 text-no-wrap"
         :class="$vuetify.display.mobile ? 'w-100 h-100' : 'h-50 w-100' "
         color="accent3"
         v-bind="activatorProps"

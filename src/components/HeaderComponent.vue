@@ -131,7 +131,7 @@
 
     <v-dialog
       v-model="themeDialog"
-      fullscreen="true"
+      :fullscreen="true"
       transition="slide-y-transition"
     >
       <template #activator="{ props: activatorProps }">
@@ -195,7 +195,6 @@
   >
     <v-img
       :src="currentGif"
-      @error="handleImageError"
     />
     <v-list>
       <v-list-item v-for="item in items" :key="item.title" @click="alterPage(item.value)">

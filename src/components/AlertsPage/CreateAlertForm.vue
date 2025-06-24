@@ -28,7 +28,7 @@
 <template>
   <v-dialog
     v-model="dialog"
-    fullscreen
+    :fullscreen="true"
     transition="dialog-bottom-transition"
   >
     <template #activator="{ props: activatorProps }">
