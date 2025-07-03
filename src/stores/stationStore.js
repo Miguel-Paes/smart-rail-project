@@ -44,6 +44,13 @@ export const useStationStore = defineStore('station', () => {
     getStationLines(id)
   }
 
+  function deleteLine() {
+    const station = allLines.value.find(s => s.lines.some(l => l.id === selectedLine.id));
+    if (station) {
+      station.lines = station.lines.filter(l => l.id !== selectedLine.id);
+    }
+  }
+
   const allLines = ref([
     {
       id: 1,
@@ -99,6 +106,6 @@ export const useStationStore = defineStore('station', () => {
     getStationLines,
     getSelectedLine,
     selectStationInRoutes,
-
+    deleteLine,
   }
 })

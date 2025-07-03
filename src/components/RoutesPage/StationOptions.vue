@@ -8,6 +8,7 @@
   const userStore = useUserStore()
 
   const expansionPanels = ref(false)
+  const excludeDialog = ref(false)
 
   const newLine = ref({
     name: '',
@@ -33,6 +34,12 @@
       finalDestination: '',
       driver: '',
     }
+  }
+
+  function excludeLine () {
+    console.log('Excluindo linha:', stationStore.selectedLine)
+    stationStore.deleteLine
+    excludeDialog.value = false
   }
 </script>
 
@@ -123,7 +130,67 @@
                 />
               </v-col>
             </v-row>
+          </v-row>
+        </v-expansion-panel-text>
+      </v-expansion-panel>
 
+      <v-expansion-panel>
+        <v-expansion-panel-title>
+          <template #default="{}">
+            <v-row>
+              <v-col class="d-flex justify-start" cols="4">
+                Excluir Rota
+              </v-col>
+            </v-row>
+          </template>
+        </v-expansion-panel-title>
+
+        <v-expansion-panel-text>
+          <v-row>
+            <v-col cols="12" sm="6">
+              <v-select
+                v-model="stationStore.selectedLine"
+                item-title="name"
+                item-value="id"
+                :items="stationStore.stationLines"
+                label="Selecione a Linha"
+                variant="underlined"
+              />
+            </v-col>
+
+            <v-col class="d-flex px-8" cols="12" sm="6">
+              <v-btn
+                @click="excludeDialog = true"
+                color="base"
+                text="Excluir Rota"
+                variant="flat"
+              />
+             <v-dialog v-model="excludeDialog" max-width="500">
+
+                <template v-slot:default="{ isActive }">
+                  <v-card title="Excluir Rota" class="pa-4">
+                    <v-card-text>
+                      Tem certeza que deseja excluir a rota selecionada?
+                    </v-card-text>
+
+                    <v-card-actions>
+                      <v-spacer></v-spacer>
+                      <v-row>
+                        <v-btn
+                          text="NÃO"
+                          @click="excludeDialog = false"
+                        />
+
+                        <v-btn
+                          text="SIM"
+                          @click="excludeLine()"
+                        />
+                      </v-row>
+                    </v-card-actions>
+                  </v-card>
+                </template>
+              </v-dialog>      
+            </v-col>
           </v-row>
         </v-expansion-panel-text>
       </v-expansion-panel>
