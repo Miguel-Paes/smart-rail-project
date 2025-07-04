@@ -22,20 +22,18 @@ export const useStationStore = defineStore('station', () => {
     state: '',
   });
 
+  const currentStation = ref(null);
   const stationId = ref(null);
-  const stationLines = computed(() => {
-    const res = allLines.value.find(station => station.id == stationId.value)?.lines || null
-    return res
-  })
-  const selectedLine = ref(null)
+  const stationLines = ref(null);
+  const selectedLine = ref(null);
 
   function getStationLines(stationId) {
-    stationLines.value = allLines.value.find(station => station.id == stationId)
-    stationLines.value = stationLines.value.lines
+    const station = allLines.value.find(station => station.id == stationId)
+    stationLines.value = station?.lines || null
   }
 
   function getSelectedLine(id) {
-    const index = stationLines.value.find(s => s.id === id)
+    const index = stationLines.find(s => s.id === id)
     selectedLine.value = { ...index }
   }
 
@@ -45,9 +43,11 @@ export const useStationStore = defineStore('station', () => {
   }
 
   function deleteLine() {
-    const station = allLines.value.find(s => s.lines.some(l => l.id === selectedLine.id));
-    if (station) {
-      station.lines = station.lines.filter(l => l.id !== selectedLine.id);
+    const index = stationLines.value.findIndex(line => line.id === selectedLine.value.id)
+    if (index) {
+      stationLines.value.splice(index, 1)
+      selectedLine.value = null
+      alert('Linha excluída com sucesso!')
     }
   }
 
@@ -98,6 +98,7 @@ export const useStationStore = defineStore('station', () => {
     },
   ])
   return {
+    currentStation,
     stations,
     userLocation,
     stationLines,

@@ -37,7 +37,6 @@
   }
 
   function excludeLine () {
-    console.log('Excluindo linha:', stationStore.selectedLine)
     stationStore.deleteLine
     excludeDialog.value = false
   }
