@@ -33,7 +33,7 @@ export const useStationStore = defineStore('station', () => {
   }
 
   function getSelectedLine(id) {
-    const index = stationLines.find(s => s.id === id)
+    const index = stationLines.value?.find(s => s.id === id)
     selectedLine.value = { ...index }
   }
 

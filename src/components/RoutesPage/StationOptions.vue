@@ -40,6 +40,14 @@
     stationStore.deleteLine()
     excludeDialog.value = false
   }
+
+  function selectedLine(id) {
+    if (id) {
+      stationStore.getSelectedLine(id)
+    } else {
+      console.error('ID não fornecido para a linha selecionada.')
+    }
+  }
 </script>
 
 <template>
@@ -148,12 +156,12 @@
           <v-row>
             <v-col cols="12" sm="6">
               <v-select
-                v-model="stationStore.selectedLine"
                 item-title="name"
                 item-value="id"
                 :items="stationStore.stationLines"
                 label="Selecione a Linha"
                 variant="underlined"
+                @update:model-value="id => selectedLine(id)"
               />
             </v-col>
 
