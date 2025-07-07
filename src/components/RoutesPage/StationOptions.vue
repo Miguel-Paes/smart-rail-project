@@ -37,7 +37,7 @@
   }
 
   function excludeLine () {
-    stationStore.deleteLine
+    stationStore.deleteLine()
     excludeDialog.value = false
   }
 </script>

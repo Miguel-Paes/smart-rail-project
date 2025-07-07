@@ -44,11 +44,9 @@ export const useStationStore = defineStore('station', () => {
 
   function deleteLine() {
     const index = stationLines.value.findIndex(line => line.id === selectedLine.value.id)
-    if (index) {
-      stationLines.value.splice(index, 1)
-      selectedLine.value = null
-      alert('Linha excluída com sucesso!')
-    }
+    console.log('Excluindo linha:')
+    stationLines.value.splice(index, 1)
+    selectedLine.value = null
   }
 
   const allLines = ref([
