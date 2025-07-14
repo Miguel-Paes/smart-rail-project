@@ -48,6 +48,35 @@
       console.error('ID não fornecido para a linha selecionada.')
     }
   }
+
+  function updateLine() {
+    if (stationStore.selectedLine) {
+      newLine.value = {
+        name: stationStore.selectedLine.name,
+        stop: stationStore.selectedLine.stop,
+        finalDestination: stationStore.selectedLine.finalDestination,
+        driver: stationStore.selectedLine.driver,
+      }
+    } else {
+      console.error('Nenhuma linha selecionada para atualização.')
+    }
+  }
+
+  function editLine() {
+    console.log(stationStore.selectedLine)
+    if (stationStore.selectedLine) {
+      stationStore.selectedLine = newLine.value
+      stationStore.updateLine()
+      newLine.value = {
+        name: '',
+        stop: '',
+        finalDestination: '',
+        driver: '',
+      }
+    } else {
+      console.error('Nenhuma linha selecionada para edição.')
+    }
+  } 
 </script>
 
 <template>
@@ -198,6 +227,86 @@
                 </template>
               </v-dialog>      
             </v-col>
+          </v-row>
+        </v-expansion-panel-text>
+      </v-expansion-panel>
+
+      <v-expansion-panel>
+        <v-expansion-panel-title>
+          <template #default="{}">
+            <v-row>
+              <v-col class="d-flex justify-start" cols="4">
+                Editar rota
+              </v-col>
+            </v-row>
+          </template>
+        </v-expansion-panel-title>
+        <v-expansion-panel-text>
+          <v-row>
+            <v-col cols="12" sm="6">
+              <v-select
+                item-title="name"
+                item-value="id"
+                :items="stationStore.stationLines"
+                label="Selecione a Linha"
+                variant="underlined"
+                @update:model-value="id => selectedLine(id)"
+              />
+            </v-col>
+            <v-col class="d-flex px-8" cols="12" sm="6">
+              <v-btn
+                color="base"
+                text="Carregar Rota"
+                @click="updateLine()"
+              />
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col cols="12" md="4" sm="6">
+              <v-text-field
+                v-model="newLine.name"
+                label="Nome da rota"
+                variant="underlined"
+              />
+            </v-col>
+
+            <v-col cols="12" md="4" sm="6">
+              <v-text-field
+                v-model="newLine.stop"
+                label="Parada da rota"
+                variant="underlined"
+              />
+            </v-col>
+
+            <v-col cols="12" md="4" sm="6">
+              <v-text-field
+                v-model="newLine.finalDestination"
+                label="Destino da rota"
+                variant="underlined"
+              />
+            </v-col>
+
+            <v-row class="d-flex align-center pl-4">
+              <v-col cols="12" md="4" sm="6">
+                <v-select
+                  v-model="newLine.driver"
+                  item-title="name"
+                  item-value="id"
+                  :items="userStore.employee"
+                  label="Maquinista da rota"
+                  variant="underlined"
+                />
+              </v-col>
+
+              <v-col class="d-flex px-8" cols="12" sm="6">
+                <v-btn
+                  color="base"
+                  :disabled="stationStore.selectedLineJustification === null"
+                  text="Editar Rota"
+                  @click="editLine()"
+                />
+              </v-col>
+            </v-row>
           </v-row>
         </v-expansion-panel-text>
       </v-expansion-panel>

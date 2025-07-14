@@ -49,6 +49,17 @@ export const useStationStore = defineStore('station', () => {
     selectedLine.value = null
   }
 
+  function updateLine(updatedLine) {
+    if (!selectedLine.value) {
+      console.error('Nenhuma linha selecionada para atualizar.')
+      return
+    }
+    const index = stationLines.value.findIndex(line => line.id === selectedLine.value.id)
+
+    stationLines.value[index] = { ...selectedLine.value }
+    console.log('Linha atualizada:', selectedLine.value)
+  }
+
   const allLines = ref([
     {
       id: 1,
@@ -106,5 +117,6 @@ export const useStationStore = defineStore('station', () => {
     getSelectedLine,
     selectStationInRoutes,
     deleteLine,
+    updateLine,
   }
 })
