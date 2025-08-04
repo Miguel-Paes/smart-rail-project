@@ -17,7 +17,7 @@ declare module 'vue' {
     RouterView: typeof import('vue-router')['RouterView']
     StationOptions: typeof import('./src/components/RoutesPage/StationOptions.vue')['default']
     TitleSection: typeof import('./src/components/template/TitleSection.vue')['default']
-    TrainsList: typeof import('./src/components/Manutention/TrainsList.vue')['default']
+    TrainsList: typeof import('./src/components/Maintenance/TrainsList.vue')['default']
     WarningsList: typeof import('./src/components/template/WarningsList.vue')['default']
   }
 }

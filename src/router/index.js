@@ -16,7 +16,7 @@ const router = createRouter({
     {
       path: '/monitoramento-e-manutencao',
       name: 'monitoramento-e-manutencao',
-      component: () => import('@/pages/manutention.vue'),
+      component: () => import('@/pages/maintenance.vue'),
     },
     {
       path: '/relatorios-e-analises',

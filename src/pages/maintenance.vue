@@ -1,7 +1,7 @@
 <script setup>
   import { useDisplayStore } from '@/stores/displayStore';
   import { useTrainStore } from '@/stores/trainsStore';
-  import TrainsList from '@/components/Manutention/TrainsList.vue';
+  import TrainsList from '@/components/Maintenance/TrainsList.vue';
 
   const displayStore = useDisplayStore()
   const trainStore = useTrainStore();
