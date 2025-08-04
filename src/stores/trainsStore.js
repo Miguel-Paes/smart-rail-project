@@ -56,7 +56,7 @@ export const useTrainStore = defineStore('train', () => {
   }
 
   const getInoperativeTrains = () => {
-    return inoperativeTrains.value = trains.value.filter(train => train.status.includes('estacionado') || train.status.includes('manutenção'))
+    return inoperativeTrains.value = trains.value.filter(train => train.status.includes('estacionado'))
   }
 
   const getInMaintenanceTrains = () => {

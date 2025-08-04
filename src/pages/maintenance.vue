@@ -2,14 +2,15 @@
   import { useDisplayStore } from '@/stores/displayStore';
   import { useTrainStore } from '@/stores/trainsStore';
   import TrainsList from '@/components/Maintenance/TrainsList.vue';
+  
+  import { storeToRefs } from 'pinia';
 
   const displayStore = useDisplayStore()
   const trainStore = useTrainStore();
 
-  const operatingTrains = trainStore.operatingTrains
-  console.log(operatingTrains.value)
-  const inoperativeTrains = trainStore.inoperativeTrains
-  const inMaintenanceTrains = trainStore.inMaintenanceTrains
+  const { operatingTrains } = storeToRefs(trainStore)
+  const { inoperativeTrains } = storeToRefs(trainStore)
+  const { inMaintenanceTrains } = storeToRefs(trainStore)
 </script>
 
 <template>
@@ -21,18 +22,28 @@
           <v-col cols="12" xs="6" sm="4">
         <v-card class="pa-3">
           <TrainsList
-          items="operatingTrains"
+          :items="operatingTrains"
           title="Trens Operando"
         />
         </v-card>
           </v-col>
 
           <v-col cols="12" xs="6" sm="4">
-        <v-card class="pa-3"></v-card>
+        <v-card class="pa-3">
+          <TrainsList
+          :items="inoperativeTrains"
+          title="Trens Estacionados"
+        />
+        </v-card>
           </v-col>
 
           <v-col cols="12" xs="6" sm="4">
-        <v-card class="pa-3"></v-card>
+        <v-card class="pa-3">
+          <TrainsList
+          :items="inMaintenanceTrains"
+          title="Trens em Manutenção"
+        />
+        </v-card>
           </v-col>
         </v-row>
       </v-card>
