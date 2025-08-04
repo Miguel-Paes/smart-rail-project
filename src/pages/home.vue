@@ -12,7 +12,7 @@
 </script>
 
 <template>
-    <h2 class="mb-3 font-weight-regular" :class="displayStore.xs ? 'text-h6' : displayStore.sm ? 'text-h5' : 'text-h4'">Dashboard Geral</h2>
+    <TitleSection title="Dashboard Geral" />
     <v-row class="d-flex">
       <v-col class="d-flex flex-column justify-center" cols="12" md="6">
         <v-row class="d-flex" :class="displayStore.xs ? '' : displayStore.sm ? '' : 'ga-3'" dense>

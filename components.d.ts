@@ -8,6 +8,7 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    copy: typeof import('./src/components/template/WarningsList copy.vue')['default']
     CreateAlertForm: typeof import('./src/components/AlertsPage/CreateAlertForm.vue')['default']
     FindStationDialog: typeof import('./src/components/home/FindStationDialog.vue')['default']
     HeaderComponent: typeof import('./src/components/HeaderComponent.vue')['default']
@@ -16,6 +17,7 @@ declare module 'vue' {
     RouterView: typeof import('vue-router')['RouterView']
     StationOptions: typeof import('./src/components/RoutesPage/StationOptions.vue')['default']
     TitleSection: typeof import('./src/components/template/TitleSection.vue')['default']
+    TrainsList: typeof import('./src/components/Manutention/TrainsList.vue')['default']
     WarningsList: typeof import('./src/components/template/WarningsList.vue')['default']
   }
 }

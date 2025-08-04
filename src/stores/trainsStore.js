@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 
 export const useTrainStore = defineStore('train', () => {
 
@@ -52,15 +52,15 @@ export const useTrainStore = defineStore('train', () => {
   }
 
   const getOperatingTrains = () => {
-    return operatingTrains.value = trains.value.find(train => train.status.includes('operando'))
+    return operatingTrains.value = trains.value.filter(train => train.status.includes('operando'))
   }
 
   const getInoperativeTrains = () => {
-    return inoperativeTrains.value = trains.value.find(train => train.status.includes('estacionado') || train.status.includes('manutenção'))
+    return inoperativeTrains.value = trains.value.filter(train => train.status.includes('estacionado') || train.status.includes('manutenção'))
   }
 
   const getInMaintenanceTrains = () => {
-    return inMaintenanceTrains.value = trains.value.find(train => train.status.includes('manutenção'))
+    return inMaintenanceTrains.value = trains.value.filter(train => train.status.includes('manutenção'))
   }
 
   const addNewTrain = (newTrain) => {
@@ -72,6 +72,13 @@ export const useTrainStore = defineStore('train', () => {
     train.lastMaintance = newTrain.lastMaintance || new Date().toISOString().split('T')[0]
     train.nextMaintance = newTrain.nextMaintance || new Date(new Date().setMonth(new Date().getMonth() + 6)).toISOString().split('T')[0]
   }
+
+  onMounted(() => {
+    getOperatingTrains()
+    console.log(operatingTrains.value)
+    getInoperativeTrains()
+    getInMaintenanceTrains()
+  })
 
   return { operatingTrains, inoperativeTrains, inMaintenanceTrains, getOperatingTrains, getInoperativeTrains, getInMaintenanceTrains, addNewTrain }
 })
