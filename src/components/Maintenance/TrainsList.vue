@@ -21,7 +21,7 @@
 
     <v-card class="pa-2" color="accent4" variant="tonal" v-for="item in items" :key="item.id">
       <v-row class="pa-3">Trem: {{ item.trainCode }}</v-row>
-      <v-row class="pa-3">Linha: {{ item.line }}</v-row>
+      <v-row class="pa-3">Linha: {{ item.line == 0 ? 'Trem sem linha' : item.line  }}</v-row>
       <v-row class="pa-3">Última Manutenção: {{ item.lastMaintance }}</v-row>
       <v-row class="pa-3">Próxima Manutenção: {{ item.nextMaintance }}</v-row>
     </v-card>
