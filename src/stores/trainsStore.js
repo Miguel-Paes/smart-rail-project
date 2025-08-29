@@ -1,8 +1,12 @@
 import Maintenance from '@/pages/maintenance.vue';
+import { useStationStore } from '@/stores/stationStore.js';
+
 import { defineStore } from 'pinia'
 import { onMounted, ref } from 'vue'
 
 export const useTrainStore = defineStore('train', () => {
+
+  const stationStore = useStationStore();
 
   const date = new Date();
   const formattedDate = date.toLocaleDateString('pt-BR');
@@ -10,7 +14,7 @@ export const useTrainStore = defineStore('train', () => {
   const trains = ref([
     {
       id: 1,
-      line: 1,
+      line: 31,
       trainCode: 'T001',
       status: 'operando - movimento',
       lastMaintance: '09-01-2025',
@@ -18,7 +22,7 @@ export const useTrainStore = defineStore('train', () => {
     },
     {
       id: 2,
-      line: 2,
+      line: 13,
       trainCode: 'T002',
       status: 'operando - parado',
       lastMaintance: '09-12-2024',
@@ -26,7 +30,7 @@ export const useTrainStore = defineStore('train', () => {
     },
     {
       id: 3,
-      line: 3,
+      line: 0,
       trainCode: 'T003',
       status: 'manutenção',
       lastMaintance: '30-12-2024',
@@ -57,7 +61,6 @@ export const useTrainStore = defineStore('train', () => {
     nextMaintance: '',
   }
 
-  // Função utilitária para formatar datas para dd/mm/aaaa
   function formatDateBR(date) {
     const d = new Date(date)
     const day = String(d.getDate()).padStart(2, '0')

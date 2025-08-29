@@ -54,7 +54,7 @@
 
       <v-card>
         <v-row>
-          <v-col cols="12" xs="6" sm="4">
+          <v-col cols="12" xs="6" sm="6">
             <v-card class="pa-3">
               <TrainsList
               :items="lateMaintenanceTrains"
@@ -63,7 +63,7 @@
             </v-card>
           </v-col>
 
-          <v-col cols="12" xs="6" sm="4">
+          <v-col cols="12" xs="6" sm="6">
             <v-card class="pa-3">
               <TrainsList
               :items="nextMaintenanceTrains"

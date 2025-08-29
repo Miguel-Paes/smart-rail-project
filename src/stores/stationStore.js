@@ -64,45 +64,45 @@ export const useStationStore = defineStore('station', () => {
     {
       id: 1,
       lines: [
-        { id: 1, name: 'Linha A', stop: 'Estação Norte', finalDestination: 'Estação Oeste', driver: '', justification: '' },
-        { id: 2, name: 'Linha B', stop: 'Estação Sul', finalDestination: 'Estação Sul', driver: '', justification: '' },
-        { id: 3, name: 'Linha C', stop: 'Estação Sul', finalDestination: 'Estação Norte', driver: '', justification: '' },
+        { id: 11, name: 'Linha A', stop: 'Estação Norte', finalDestination: 'Estação Oeste', driver: '', justification: '' },
+        { id: 12, name: 'Linha B', stop: 'Estação Sul', finalDestination: 'Estação Sul', driver: '', justification: '' },
+        { id: 13, name: 'Linha C', stop: 'Estação Sul', finalDestination: 'Estação Norte', driver: '', justification: '' },
       ],
     },
 
     {
       id: 2,
       lines: [
-        { id: 1, name: 'Linha D', stop: 'Estação Central', finalDestination: 'Estação Leste', driver: '', justification: '' },
-        { id: 2, name: 'Linha E', stop: 'Estação Sul', finalDestination: 'Estação Oeste', driver: '', justification: '' },
-        { id: 3, name: 'Linha F', stop: 'Estação Oeste', finalDestination: 'Estação Central', driver: '', justification: '' },
+        { id: 21, name: 'Linha D', stop: 'Estação Central', finalDestination: 'Estação Leste', driver: '', justification: '' },
+        { id: 22, name: 'Linha E', stop: 'Estação Sul', finalDestination: 'Estação Oeste', driver: '', justification: '' },
+        { id: 23, name: 'Linha F', stop: 'Estação Oeste', finalDestination: 'Estação Central', driver: '', justification: '' },
       ],
     },
 
     {
       id: 3,
       lines: [
-        { id: 1, name: 'Linha G', stop: 'Estação Central', finalDestination: 'Estação Norte', driver: '', justification: '' },
-        { id: 2, name: 'Linha H', stop: 'Estação Oeste', finalDestination: 'Estação Leste', driver: '', justification: '' },
-        { id: 3, name: 'Linha I', stop: 'Estação Central', finalDestination: 'Estação Oeste', driver: '', justification: '' },
+        { id: 31, name: 'Linha G', stop: 'Estação Central', finalDestination: 'Estação Norte', driver: '', justification: '' },
+        { id: 32, name: 'Linha H', stop: 'Estação Oeste', finalDestination: 'Estação Leste', driver: '', justification: '' },
+        { id: 33, name: 'Linha I', stop: 'Estação Central', finalDestination: 'Estação Oeste', driver: '', justification: '' },
       ],
     },
 
     {
       id: 4,
       lines: [
-        { id: 1, name: 'Linha J', stop: 'Estação Sul', finalDestination: 'Estação Norte', driver: '', justification: '' },
-        { id: 2, name: 'Linha K', stop: 'Estação Central', finalDestination: 'Estação Oeste', driver: '', justification: '' },
-        { id: 3, name: 'Linha L', stop: 'Estação Norte', finalDestination: 'Estação Oeste', driver: '', justification: '' },
+        { id: 41, name: 'Linha J', stop: 'Estação Sul', finalDestination: 'Estação Norte', driver: '', justification: '' },
+        { id: 42, name: 'Linha K', stop: 'Estação Central', finalDestination: 'Estação Oeste', driver: '', justification: '' },
+        { id: 43, name: 'Linha L', stop: 'Estação Norte', finalDestination: 'Estação Oeste', driver: '', justification: '' },
       ],
     },
 
     {
       id: 5,
       lines: [
-        { id: 1, name: 'Linha M', stop: 'Estação Central', finalDestination: 'Estação Leste', driver: '', justification: '' },
-        { id: 2, name: 'Linha N', stop: 'Estação Sul', finalDestination: 'Estação Norte', driver: '', justification: '' },
-        { id: 3, name: 'Linha O', stop: 'Estação Norte', finalDestination: 'Estação Sul', driver: '', justification: '' },
+        { id: 51, name: 'Linha M', stop: 'Estação Central', finalDestination: 'Estação Leste', driver: '', justification: '' },
+        { id: 52, name: 'Linha N', stop: 'Estação Sul', finalDestination: 'Estação Norte', driver: '', justification: '' },
+        { id: 53, name: 'Linha O', stop: 'Estação Norte', finalDestination: 'Estação Sul', driver: '', justification: '' },
       ],
     },
   ])
