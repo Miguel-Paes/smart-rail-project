@@ -2,7 +2,7 @@ import Maintenance from '@/pages/maintenance.vue';
 import { useStationStore } from '@/stores/stationStore.js';
 
 import { defineStore } from 'pinia'
-import { onMounted, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 
 export const useTrainStore = defineStore('train', () => {
 
@@ -49,8 +49,6 @@ export const useTrainStore = defineStore('train', () => {
   const operatingTrains = ref([])
   const inoperativeTrains = ref([])
   const inMaintenanceTrains = ref([])
-  const lateMaintanceTrains = ref([])
-  const nextMaintanceTrains = ref([])
 
   const defaultTrain = {
     id: 0,
@@ -102,25 +100,17 @@ export const useTrainStore = defineStore('train', () => {
     return inMaintenanceTrains.value = trains.value.filter(train => train.status.includes('manutenção'))
   }
 
-  const getLateMaintenanceTrains = () => {
-    return lateMaintanceTrains.value = trains.value.filter(train => {
-      if (compareDate(train.nextMaintance) === 'late') {
-        return true;
-      } else {
-        return false
-      }
-    });
-  }
+  const nextMaintanceTrains = computed(() => {
+    return trains.value.filter(train =>
+      compareDate(train.nextMaintance) === 'next'
+    );
+  });
 
-  const getNextMaintenanceTrains = () => {
-    return nextMaintanceTrains.value = trains.value.filter(train => {
-      if (compareDate(train.nextMaintance) === 'next') {
-        return true;
-      } else {
-        return false
-      }
-    });
-  }
+  const lateMaintanceTrains = computed(() => {
+    return trains.value.filter(train =>
+      compareDate(train.nextMaintance) === 'late'
+    );
+  });
 
   const addNewTrain = (newTrain) => {
     const train = { ...defaultTrain }
@@ -142,9 +132,7 @@ export const useTrainStore = defineStore('train', () => {
     getOperatingTrains()
     getInoperativeTrains()
     getInMaintenanceTrains()
-    getLateMaintenanceTrains()
-    getNextMaintenanceTrains()
   })
 
-  return { operatingTrains, inoperativeTrains, inMaintenanceTrains, lateMaintanceTrains, nextMaintanceTrains, getOperatingTrains, getInoperativeTrains, getInMaintenanceTrains, getLateMaintenanceTrains, getNextMaintenanceTrains, addNewTrain }
+  return { operatingTrains, inoperativeTrains, inMaintenanceTrains, lateMaintanceTrains, nextMaintanceTrains, getOperatingTrains, getInoperativeTrains, getInMaintenanceTrains, addNewTrain }
 })
