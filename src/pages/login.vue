@@ -78,10 +78,10 @@
       </v-card-item>
       <v-card-item>
         <h3>Outras Opções de Login</h3>
-        <v-card-text class="display-flex pa-1 ml-2 justify-center align-center">
+        <v-card-text class="display-flex pa-1 ml-7 justify-center align-center">
             <v-btn variant="flat" :ripple="false" class="pa-0 mx-2"><img src="https://img.shields.io/badge/google-4285F4?style=for-the-badge&logo=google&logoColor=white"/></v-btn>
             <v-btn variant="flat" :ripple="false" class="pa-0 mx-2"><img src="https://img.shields.io/badge/Facebook-%231877F2.svg?style=for-the-badge&logo=Facebook&logoColor=white"/></v-btn>
-            <v-btn variant="flat" :ripple="false" class="pa-0 mx-2"><img src="https://img.shields.io/badge/Instagram-%23E4405F.svg?style=for-the-badge&logo=Instagram&logoColor=white"/></v-btn>
+            <v-btn variant="flat" :ripple="false" class="pa-0 mx-2"><img src="https://img.shields.io/badge/Apple-%23000000.svg?style=for-the-badge&logo=apple&logoColor=white"/></v-btn>
         </v-card-text>
       </v-card-item>
     </v-card>
