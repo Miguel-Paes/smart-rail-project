@@ -8,10 +8,14 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    AuthForm: typeof import('./src/components/LoginPage/AuthForm.vue')['default']
+    ButtonsSection: typeof import('./src/components/LoginPage/ButtonsSection.vue')['default']
     CreateAlertForm: typeof import('./src/components/AlertsPage/CreateAlertForm.vue')['default']
     FindStationDialog: typeof import('./src/components/home/FindStationDialog.vue')['default']
     HeaderComponent: typeof import('./src/components/HeaderComponent.vue')['default']
     LineOptions: typeof import('./src/components/RoutesPage/LineOptions.vue')['default']
+    LoginForm: typeof import('./src/components/LoginPage/LoginForm.vue')['default']
+    RegisterForm: typeof import('./src/components/LoginPage/RegisterForm.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     StationOptions: typeof import('./src/components/RoutesPage/StationOptions.vue')['default']
