@@ -21,6 +21,7 @@ const displayStore = useDisplayStore();
       <AuthForm />
     </div>
   </v-card>
+
 </template>
 
 <style scoped>
@@ -34,5 +35,6 @@ const displayStore = useDisplayStore();
   z-index: 1;
   padding: 2rem;
 }
+
 </style>
 
