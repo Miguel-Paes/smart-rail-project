@@ -5,17 +5,6 @@ import BlankPage from '@/layouts/blankPage.vue'
 const routes = [
   {
     path: "/",
-    component: BlankPage,
-    children: [
-      {
-        path: "/login",
-        name: "Login",
-        component: () => import("@/pages/login.vue"),
-      },
-    ],
-  },
-  {
-    path: "/",
     component: FullPage,
     children: [
       {
@@ -44,6 +33,17 @@ const routes = [
         component: () => import('@/pages/alerts.vue'),
       },
     ]
+  },
+  {
+    path: "/",
+    component: BlankPage,
+    children: [
+      {
+        path: "/login",
+        name: "Login",
+        component: () => import("@/pages/login.vue"),
+      },
+    ],
   },
 ];
 
