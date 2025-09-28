@@ -5,6 +5,17 @@ import BlankPage from '@/layouts/blankPage.vue'
 const routes = [
   {
     path: "/",
+    component: BlankPage,
+    children: [
+      {
+        path: "/login",
+        name: "Login",
+        component: () => import("@/pages/login.vue"),
+      },
+    ],
+  },
+  {
+    path: "/",
     component: FullPage,
     children: [
       {
@@ -34,17 +45,6 @@ const routes = [
       },
     ]
   },
-  {
-    path: "/",
-    component: BlankPage,
-    children: [
-      {
-        path: "/login",
-        name: "Login",
-        component: () => import("@/pages/login.vue"),
-      },
-    ],
-  },
 ];
 
 const router = createRouter({
@@ -52,7 +52,7 @@ const router = createRouter({
   routes,
 });
 
-router.beforeEach((to, from, next) => {
+/* router.beforeEach((to, _from, next) => {
   const isAuthenticated = localStorage.getItem("token") !== null;
   const publicPages = ['Login']; // Páginas que não requerem autenticação
 
@@ -64,6 +64,6 @@ router.beforeEach((to, from, next) => {
   } else {
     next();
   }
-});
+}); */
 
 export default router;

@@ -5,22 +5,35 @@ const displayStore = useDisplayStore();
 </script>
 
 <template>
-  <v-card
-    class="d-flex flex-column align-center justify-center h-100"
-    :class="
-      displayStore.xs
-        ? 'w-100'
-        : displayStore.sm
-        ? 'w-50 align-self-center'
-        : 'elevated inclined-card overflow-hidden w-50'
-    "
-    :variant="displayStore.mdAndUp ? 'elevated' : 'translucent'"
-  >
-    <span :class="displayStore.mdAndUp ? 'declined-text' : ''">
-      <h1>Autenticação</h1>
-      <AuthForm />
-    </span>
-  </v-card>
+  <div class="container">
+    <v-card
+      class="d-flex flex-column align-center justify-center"
+      :class="
+        displayStore.xs
+          ? 'w-100'
+          : displayStore.sm
+          ? 'w-100 align-self-center tablet-card'
+          : 'elevated inclined-card overflow-hidden w-50'
+      "
+      :variant="displayStore.mdAndUp ? 'elevated' : 'translucent'"
+    >
+      <span
+        class="w-50"
+        :class="
+          displayStore.mdAndUp
+            ? 'declined-text'
+            : displayStore.xs
+            ? 'w-75'
+            : displayStore.sm
+            ? 'w-75 align-self-center'
+            : ''
+        "
+      >
+        <h1>Autenticação</h1>
+        <AuthForm />
+      </span>
+    </v-card>
+  </div>
 </template>
 
 <style scoped>
@@ -29,10 +42,23 @@ const displayStore = useDisplayStore();
   position: relative;
   bottom: 3rem;
   right: 13rem;
-  height: 70vh;
+  height: 110vh;
 }
 
 .declined-text {
   transform: rotate(-5deg);
+  position: relative;
+  bottom: 1rem;
+  left: 5rem;
+}
+
+.tablet-card {
+  position: relative;
+  top: 9rem;
+}
+
+.container {
+  overflow: hidden;
+  height: 100vh;
 }
 </style>
