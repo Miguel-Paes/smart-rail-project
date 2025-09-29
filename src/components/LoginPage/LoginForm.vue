@@ -22,7 +22,7 @@
       variant="tonal"
       dark
     >
-      Entrar
+      <span class="text-lime-darken-2">Entrar</span>
     </v-btn>
   </v-form>
 </template>

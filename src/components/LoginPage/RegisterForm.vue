@@ -30,7 +30,7 @@
       variant="tonal"
       dark
     >
-      Registrar
+      <span class="text-lime-darken-2">Registrar</span>
     </v-btn>
   </v-form>
 </template>
