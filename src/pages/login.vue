@@ -5,7 +5,7 @@ const displayStore = useDisplayStore();
 </script>
 
 <template>
-  <div class="container">
+  <div class="container pc-background">
     <v-card
       class="d-flex flex-column align-center justify-center"
       :class="
@@ -15,7 +15,8 @@ const displayStore = useDisplayStore();
           ? 'w-100 align-self-center tablet-card'
           : 'elevated inclined-card overflow-hidden w-50'
       "
-      :variant="displayStore.mdAndUp ? 'elevated' : 'translucent'"
+      variant="tonal"
+      color="lime-accent-4"
     >
       <span
         class="w-50"
@@ -29,7 +30,7 @@ const displayStore = useDisplayStore();
             : ''
         "
       >
-        <h1>Autenticação</h1>
+        <h1 class="w-100 text-center text-lime-accent-3">Autenticação</h1>
         <AuthForm />
       </span>
     </v-card>
@@ -60,5 +61,12 @@ const displayStore = useDisplayStore();
 .container {
   overflow: hidden;
   height: 100vh;
+  padding: 0;
+}
+
+.pc-background {
+  background-color: transparent;
+  background: url("/images/desktop-bg.gif") no-repeat center center fixed;
+  background-size: cover;
 }
 </style>

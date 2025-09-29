@@ -5,8 +5,8 @@ const tabs = ref("login");
 </script>
 
 <template>
-  <v-card-item class="pa-0 rounded-lg w-100 px-2 mt-6">
-    <v-tabs v-model="tabs" class="bg-red-darken-2 d-flex rounded-t-lg">
+  <v-card-item class="pa-0 rounded-lg w-100 px-2 mt-6 bg-lime-lighten-5">
+    <v-tabs v-model="tabs" class="d-flex rounded-t-lg" color="lime-accent-4">
       <v-tab value="login">Entrar</v-tab>
       <v-tab value="register">Registrar</v-tab>
     </v-tabs>
@@ -27,7 +27,7 @@ const tabs = ref("login");
   </v-card-item>
   <v-card-item>
     <v-divider class="my-6" thickness="3"
-      ><h5 class="text-center text-grey">Outras Opções</h5></v-divider
+      ><h5 class="text-center text-lime">Outras Opções</h5></v-divider
     >
     <v-card-text
       class="display-flex flex-column pa-1 justify-center align-center"
