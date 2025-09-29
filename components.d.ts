@@ -8,6 +8,7 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    AlternativeLoginBtn: typeof import('./src/components/LoginPage/AlternativeLoginBtn.vue')['default']
     AuthForm: typeof import('./src/components/LoginPage/AuthForm.vue')['default']
     ButtonsSection: typeof import('./src/components/LoginPage/ButtonsSection.vue')['default']
     CreateAlertForm: typeof import('./src/components/AlertsPage/CreateAlertForm.vue')['default']
