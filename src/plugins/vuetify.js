@@ -17,6 +17,44 @@ const vuetify = createVuetify({
   theme: {
     defaultTheme: 'redDark',
     themes: {
+      limeLight: {
+        dark: false,
+        colors: {
+          base: '#CDDC39',
+          lighten5: '#F9FBE7',
+          lighten4: '#F0F4C3',
+          lighten3: '#E6EE9C',
+          lighten2: '#DCE775',
+          lighten1: '#D4E157',
+          darken1: '#C0CA33',
+          darken2: '#AFB42B',
+          darken3: '#9E9D24',
+          darken4: '#827717',
+          accent1: '#F4FF81',
+          accent2: '#EEFF41',
+          accent3: '#C6FF00',
+          accent4: '#AEEA00',
+        },
+      },
+      limeDark: {
+        dark: true,
+        colors: {
+          base: '#CDDC39',
+          lighten5: '#F9FBE7',
+          lighten4: '#F0F4C3',
+          lighten3: '#E6EE9C',
+          lighten2: '#DCE775',
+          lighten1: '#D4E157',
+          darken1: '#C0CA33',
+          darken2: '#AFB42B',
+          darken3: '#9E9D24',
+          darken4: '#827717',
+          accent1: '#F4FF81',
+          accent2: '#EEFF41',
+          accent3: '#C6FF00',
+          accent4: '#AEEA00',
+        },
+      },
       redLight: {
         dark: false,
         colors: {

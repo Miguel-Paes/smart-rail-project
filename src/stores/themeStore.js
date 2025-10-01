@@ -14,7 +14,7 @@ export const useThemeStore = defineStore('theme', () => {
     isDark.value = !isDark.value
   }
 
-  const themeColor = ref('red')
+  const themeColor = ref('lime')
 
   const currentTheme = computed(() => {
     return `${themeColor.value}${isDark.value ? 'Dark' : 'Light'}`
