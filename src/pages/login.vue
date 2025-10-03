@@ -5,7 +5,10 @@ const displayStore = useDisplayStore();
 </script>
 
 <template>
-  <div class="container pc-background">
+  <div
+    class="container pc-background"
+    :class="displayStore.mdAndUp ? 'lock-height' : 'h-auto padding-btn'"
+  >
     <v-card
       class="d-flex flex-column align-center justify-center"
       :class="
@@ -16,7 +19,7 @@ const displayStore = useDisplayStore();
           : 'elevated inclined-card overflow-hidden w-50'
       "
       variant="tonal"
-      color="lime-accent-4"
+      :color="displayStore.mdAndUp ? 'lime-accent-4' : 'transparent'"
     >
       <span
         class="w-50"
@@ -60,7 +63,6 @@ const displayStore = useDisplayStore();
 
 .container {
   overflow: hidden;
-  height: 100vh;
   padding: 0;
 }
 
@@ -68,5 +70,13 @@ const displayStore = useDisplayStore();
   background-color: transparent;
   background: url("/images/desktop-bg.gif") no-repeat center center fixed;
   background-size: cover;
+}
+
+.lock-height {
+  height: 100vh;
+}
+
+.padding-btn {
+  padding-bottom: 10rem;
 }
 </style>
