@@ -135,8 +135,8 @@ const validThemes = Object.keys(gifMap);
     <v-toolbar-title>Smart Rail</v-toolbar-title>
 
     <v-dialog
+      class="d-flex align-center justify-center dialog_center"
       v-model="themeDialog"
-      :fullscreen="true"
       transition="slide-y-transition"
     >
       <template #activator="{ props: activatorProps }">
@@ -148,10 +148,18 @@ const validThemes = Object.keys(gifMap);
         />
       </template>
 
-      <v-card class="pa-7">
-        <v-card-title>MUDAR COR DO TEMA</v-card-title>
+      <v-card class="pa-10" width="500" min-height="300">
+        <v-row class="d-flex align-center justify-space-between mb-4">
+          <v-card-title>MUDAR COR DO TEMA</v-card-title>
+          <v-btn
+            class="text-h6 align-center justify-center d-flex"
+            color="base"
+            icon="mdi-window-close"
+            @click="themeDialog = false"
+          />
+        </v-row>
         <v-divider color="accent-3 mb-5" />
-        <v-row class="d-flex">
+        <v-row class="d-flex space-between">
           <v-col class="pa-0 h-0 mb-2" cols="12" md="4" sm="6">
             <v-select
               v-model="themeStore.themeColor"
@@ -161,7 +169,13 @@ const validThemes = Object.keys(gifMap);
               label="Cor do tema:"
             />
           </v-col>
-          <v-col class="pa-0 h-0 mb-2" cols="12" md="4" sm="6">
+          <v-col
+            class="pa-0 h-0 mb-2"
+            :class="displayStore.mdAndUp ? 'switch_lateral' : ''"
+            cols="12"
+            md="4"
+            sm="6"
+          >
             <v-switch
               v-model="themeStore.isDark"
               color="lighten1"
@@ -170,19 +184,7 @@ const validThemes = Object.keys(gifMap);
             />
           </v-col>
           <v-col class="h-0 mb-2 d-flex justify-end" cols="12" md="4" sm="6">
-            <v-btn
-              class="text-h6 align-center justify-center d-flex"
-              color="base"
-              icon="mdi-window-close"
-              @click="themeDialog = false"
-            />
           </v-col>
-        </v-row>
-
-        <v-row>
-          <v-card>
-            <v-card-title> Demonstração </v-card-title>
-          </v-card>
         </v-row>
       </v-card>
     </v-dialog>
@@ -226,3 +228,15 @@ const validThemes = Object.keys(gifMap);
     </v-img>
   </v-navigation-drawer>
 </template>
+
+<style scoped>
+.switch_lateral {
+  position: relative;
+  left: 25%;
+}
+
+.dialog_center {
+  position: center;
+  left: 35%;
+}
+</style>

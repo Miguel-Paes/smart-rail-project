@@ -1,52 +1,52 @@
 <script setup>
-  import { ref } from 'vue';
-  import { useStationStore } from '@/stores/stationStore'
-  import { useUserStore } from '@/stores/userStore';
+import { ref } from "vue";
+import { useStationStore } from "@/stores/stationStore";
+import { useUserStore } from "@/stores/userStore";
 
-  const stationStore = useStationStore()
-  const userStore = useUserStore()
+const stationStore = useStationStore();
+const userStore = useUserStore();
 
-  const expansionPanels = ref(false)
-  const driver = ref('')
-  const justification = ref('')
+const expansionPanels = ref(false);
+const driver = ref("");
+const justification = ref("");
 
-  const commercialLoad = ref({
-    name: '',
-    type: '',
-    enterprise: '',
+const commercialLoad = ref({
+  name: "",
+  type: "",
+  enterprise: "",
+  weight: 0,
+  volume: 0,
+});
+
+function defineDriver() {
+  stationStore.selectedLine.driver = driver.value;
+}
+
+function defineJustification() {
+  stationStore.selectedLine.justification = justification.value;
+  console.log(stationStore.selectedLine.justification);
+}
+
+function addComercialLoad() {
+  if (stationStore.selectedLine.commercialLoads === undefined) {
+    stationStore.selectedLine.commercialLoads = [];
+  }
+  stationStore.selectedLine.commercialLoads.push({
+    name: commercialLoad.value.name,
+    type: commercialLoad.value.type,
+    enterprise: commercialLoad.value.enterprise,
+    weight: commercialLoad.value.weight,
+    volume: commercialLoad.value.volume,
+  });
+
+  commercialLoad.value = {
+    name: "",
+    type: "",
+    enterprise: "",
     weight: 0,
     volume: 0,
-  })
-
-  function defineDriver () {
-    stationStore.selectedLine.driver = driver.value
-  }
-
-  function defineJustification () {
-    stationStore.selectedLine.justification = justification.value
-    console.log(stationStore.selectedLine.justification)
-  }
-
-  function addComercialLoad () {
-    if (stationStore.selectedLine.commercialLoads === undefined) {
-      stationStore.selectedLine.commercialLoads = []
-    }
-    stationStore.selectedLine.commercialLoads.push({
-      name: commercialLoad.value.name,
-      type: commercialLoad.value.type,
-      enterprise: commercialLoad.value.enterprise,
-      weight: commercialLoad.value.weight,
-      volume: commercialLoad.value.volume,
-    })
-
-    commercialLoad.value = {
-      name: '',
-      type: '',
-      enterprise: '',
-      weight: 0,
-      volume: 0,
-    }
-  }
+  };
+}
 </script>
 
 <template>
@@ -59,16 +59,16 @@
         :items="stationStore.stations"
         label="Selecione a Estação"
         variant="underlined"
+        @update:model-value="stationStore.getStationLines"
       />
     </v-col>
 
     <v-col cols="12" md="5">
       <v-select
-        v-if="stationStore.stationId != null"
         v-model="stationStore.selectedLine"
         item-title="name"
         item-value="id"
-        :items="stationStore.stationLines"
+        :items="stationStore.stationLines ? stationStore.stationLines : []"
         label="Selecione a Linha"
         variant="underlined"
       />
