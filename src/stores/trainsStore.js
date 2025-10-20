@@ -33,8 +33,8 @@ export const useTrainStore = defineStore('train', () => {
       line: 0,
       trainCode: 'T003',
       status: 'manutenção',
-      lastMaintance: '30-12-2024',
-      nextMaintance: '30-06-2025',
+      lastMaintance: '12-30-2024',
+      nextMaintance: '06-30-2025',
     },
     {
       id: 4,
