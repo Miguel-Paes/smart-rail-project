@@ -1,45 +1,37 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue';
 
+import createWarningFromStore from '../service/warning.js';
+import { create } from 'node_modules/axios/index.cjs';
+
 export const useWarningStore = defineStore('warnings', () => {
 
-  const warnings = ref([])
-
-  const warningID = ref(1)
-
-  const defaultWarning = ref({
-    id: warningID.value,
-    message: '',
-    notificationType: [],
-    duration: {
-      start: '',
-      end: '',
+  const state = ref({
+    warnings: createWarningFromStore.getWarnings(),
+    defaultWarning: {
+      id: -1,
+      message: '',
+      notificationType: [],
+      duration: {
+        start: '',
+        end: '',
+      },
+      from_user: true,
     },
-    station: '',
-    from_user: true,
+    warningTypes: [
+      'Cancelamento', 'Acidente', 'Interdição', 'Desvio', 'Atraso', 'Informação', 'Alerta', 'Manutenção', 'Recomendação', 'Mudança de Horário', 'Mudança de Plataforma', 'Mudança de Linha', 'Mudança de Trem',
+    ]
   })
 
-  const warningTypes = ref([
-    'Cancelamento', 'Acidente', 'Interdição', 'Desvio', 'Atraso', 'Informação', 'Alerta', 'Manutenção', 'Recomendação', 'Mudança de Horário', 'Mudança de Plataforma', 'Mudança de Linha', 'Mudança de Trem',
-  ])
+  const warnings = state.value.warnings
 
-  const stationWarnings = ref([])
+  const newWarning = { ...state.defaultWarning.value }
 
-  function addStationWarning(stationId) {
-    stationWarnings.value = warnings.value.filter(warning => {
-      warning.station = stationId
+  const types = { ...state.warningTypes.value }
 
-      return warning
-    })
-  }
+  const addWarning
 
-  function removeWarning(id) {
-    const removedWarning = warnings.value.find(warning => warning.id === id)
-    if (removedWarning) {
-      warnings.value.splice(warnings.value.indexOf(removedWarning), 1)
-    }
-    return removedWarning
-  }
+  const removeWarning
 
-  return { warnings, defaultWarning, removeWarning, stationWarnings, addStationWarning, warningTypes }
+  return { warnings, defaultWarning, removeWarning, warningTypes }
 })
