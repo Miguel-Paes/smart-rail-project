@@ -1,13 +1,12 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue';
 
-import createWarningFromStore from '../service/warning.js';
-import { create } from 'node_modules/axios/index.cjs';
+import WarningService from '../service/warning.js';
 
 export const useWarningStore = defineStore('warnings', () => {
 
   const state = ref({
-    warnings: createWarningFromStore.getWarnings(),
+    warnings: [],
     defaultWarning: {
       id: -1,
       message: '',
@@ -25,13 +24,13 @@ export const useWarningStore = defineStore('warnings', () => {
 
   const warnings = state.value.warnings
 
-  const newWarning = { ...state.defaultWarning.value }
+  const newWarning = { ...state.value.defaultWarning }
 
-  const types = { ...state.warningTypes.value }
+  const types = { ...state.value.warningTypes }
 
-  const addWarning
+  // const addWarning
 
-  const removeWarning
+  // const removeWarning
 
-  return { warnings, defaultWarning, removeWarning, warningTypes }
+  return { warnings, newWarning, types }
 })
