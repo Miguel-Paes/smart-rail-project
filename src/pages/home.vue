@@ -1,4 +1,6 @@
 <script setup>
+import { onMounted } from "vue";
+
 import { useStationStore } from "@/stores/stationStore.js";
 import { useDisplayStore } from "@/stores/displayStore.js";
 import { useWarningStore } from "@/stores/warningsStore";
@@ -9,6 +11,10 @@ import WarningsList from "@/components/template/WarningsList.vue";
 const stationStore = useStationStore();
 const displayStore = useDisplayStore();
 const warningStore = useWarningStore();
+
+onMounted(() => {
+  warningStore.getWarning();
+});
 </script>
 
 <template>
@@ -76,7 +82,7 @@ const warningStore = useWarningStore();
     </v-col>
 
     <v-col cols="12" md="6">
-      <WarningsList :items="warningStore.warnings" />
+      <WarningsList :items="warningStore.warnings" icons="false" />
     </v-col>
   </v-row>
 </template>

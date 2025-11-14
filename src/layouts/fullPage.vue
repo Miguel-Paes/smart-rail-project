@@ -1,7 +1,8 @@
 <script setup>
 import { RouterView } from "vue-router";
-import { useDisplayStore } from "@/stores/displayStore.js";
+import { onMounted } from "vue";
 
+import { useDisplayStore } from "@/stores/displayStore.js";
 import HeaderComponent from "@/components/HeaderComponent.vue";
 
 const displayStore = useDisplayStore();

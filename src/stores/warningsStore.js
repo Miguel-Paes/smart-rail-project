@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 import { ref, reactive } from 'vue'
+
 import WarningService from '../service/warning.js'
 
 export const useWarningStore = defineStore('warnings', () => {
@@ -38,6 +39,19 @@ export const useWarningStore = defineStore('warnings', () => {
     }
   }
 
+  const getWarning = async () => {
+    loading.value = true;
+    try {
+      await WarningService.fetchWarnings();
+      console.log(warnings.value);
+    } catch (error) {
+      console.error('Erro ao buscar warnings:', error);
+      throw error;
+    } finally {
+      loading.value = false;
+    }
+  };
+
   const resetNewWarning = () => {
     Object.assign(newWarning, {
       id: -1,
@@ -55,6 +69,7 @@ export const useWarningStore = defineStore('warnings', () => {
     warningTypes,
     loading,
     addWarning,
-    resetNewWarning
+    resetNewWarning,
+    getWarning
   }
 })

@@ -21,6 +21,7 @@ async function createWarning() {
 
     // Usa o método da store que persiste no Firebase
     await warningStore.addWarning();
+    await warningStore.getWarning();
 
     // A store já deve resetar o newWarning automaticamente
     // Se não resetar, chame: warningStore.resetNewWarning()
@@ -90,6 +91,7 @@ function resetForm() {
               item-value="id"
               :items="stationStore.stations"
               label="Estação"
+              multiple
               variant="underlined"
             />
           </v-col>
