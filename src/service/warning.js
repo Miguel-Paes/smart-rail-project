@@ -1,5 +1,5 @@
 import { onMounted } from "vue";
-import { collection, addDoc, Timestamp, query, where, getDocs, documentId, orderBy } from "firebase/firestore";
+import { collection, addDoc, Timestamp, query, where, getDocs, documentId, orderBy, doc } from "firebase/firestore";
 import { db } from "@/plugins/firebase";
 
 import { useWarningStore } from "@/stores/warningsStore";
@@ -39,6 +39,30 @@ export default class WarningService {
 
     } catch (error) {
       console.error("Error fetching warnings: ", error);
+      throw error;
+    }
+  }
+
+  static async removeWarning(warningId) {
+    try {
+      const docRef = doc(warningCollection, warningId);
+
+      const docSnap = await getDoc(docRef);
+
+      if (!docSnap.exists()) {
+        console.log("Warning not found");
+        return false;
+      }
+
+      await deleteDoc(docRef);
+
+      const warningStore = useWarningStore();
+      warningStore.removeWarning(warningId);
+
+      return true;
+    }
+    catch (error) {
+      console.error("Error removing warning: ", error);
       throw error;
     }
   }

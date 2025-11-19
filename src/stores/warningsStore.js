@@ -63,6 +63,22 @@ export const useWarningStore = defineStore('warnings', () => {
     })
   }
 
+  const removeWarning = (id) => {
+    warnings.value = warnings.value.filter(warning => warning.id !== id);
+  }
+
+  const deleteWarning = async (warningId) => {
+    loading.value = true;
+    try {
+      await WarningService.removeWarning();
+    } catch (error) {
+      console.error('Erro ao deletar warnings:', error);
+      throw error;
+    } finally {
+      loading.value = false;
+    }
+  };
+
   return {
     warnings,
     newWarning,
@@ -70,6 +86,8 @@ export const useWarningStore = defineStore('warnings', () => {
     loading,
     addWarning,
     resetNewWarning,
-    getWarning
+    getWarning,
+    removeWarning,
+    deleteWarning,
   }
 })

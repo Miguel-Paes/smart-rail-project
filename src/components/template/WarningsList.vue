@@ -17,6 +17,20 @@ defineProps({
     default: true,
   },
 });
+
+const emit = defineEmits(["warning-deleted"]);
+
+const deleteWarning = async (id) => {
+  const itemToDelete = id;
+  console.log("Deletando warning com ID:", itemToDelete);
+  try {
+    await WarningStore.deleteWarning(id);
+    // Emite um evento para notificar o pai que um warning foi removido
+    emit("warning-deleted", id);
+  } catch (error) {
+    console.error("Erro ao deletar warning:", error);
+  }
+};
 </script>
 
 <template>
@@ -38,7 +52,7 @@ defineProps({
           <v-btn
             variant="none"
             icon="mdi-trash-can"
-            @click="WarningStore.removeWarning"
+            @click="deleteWarning(item.id)"
           />
         </v-col>
       </v-row>
