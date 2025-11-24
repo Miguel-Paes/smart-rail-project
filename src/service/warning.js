@@ -1,5 +1,5 @@
 import { onMounted } from "vue";
-import { collection, addDoc, Timestamp, query, where, getDocs, documentId, orderBy, doc } from "firebase/firestore";
+import { collection, addDoc, Timestamp, query, where, getDocs, documentId, orderBy, doc, deleteDoc } from "firebase/firestore";
 import { db } from "@/plugins/firebase";
 
 import { useWarningStore } from "@/stores/warningsStore";
@@ -45,16 +45,13 @@ export default class WarningService {
 
   static async removeWarning(warningId) {
     try {
-      const docRef = doc(warningCollection, warningId);
+      const q = query(warningCollection, where('id', '==', warningId));
 
-      const docSnap = await getDoc(docRef);
+      const querySnapshot = await getDocs(q);
 
-      if (!docSnap.exists()) {
-        console.log("Warning not found");
-        return false;
-      }
-
-      await deleteDoc(docRef);
+      querySnapshot.forEach(async (doc) => {
+        await deleteDoc(doc.ref);
+      });
 
       const warningStore = useWarningStore();
       warningStore.removeWarning(warningId);

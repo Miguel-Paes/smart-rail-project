@@ -70,7 +70,7 @@ export const useWarningStore = defineStore('warnings', () => {
   const deleteWarning = async (warningId) => {
     loading.value = true;
     try {
-      await WarningService.removeWarning();
+      await WarningService.removeWarning(warningId);
     } catch (error) {
       console.error('Erro ao deletar warnings:', error);
       throw error;
