@@ -1,16 +1,12 @@
 // Utilities
 import { defineStore } from 'pinia'
-import { computed, ref } from 'vue';
+import { onMounted, ref } from 'vue';
+
+import StationService from '../service/station.js'
 
 export const useStationStore = defineStore('station', () => {
-
-  const stations = ref([
-    { id: 1, name: 'Estação Central' },
-    { id: 2, name: 'Estação Norte' },
-    { id: 3, name: 'Estação Sul' },
-    { id: 4, name: 'Estação Leste' },
-    { id: 5, name: 'Estação Oeste' },
-  ]);
+  const loading = ref(false)
+  const stations = ref([]);
 
   const userLocation = ref({
     cep: '',
@@ -26,6 +22,19 @@ export const useStationStore = defineStore('station', () => {
   const stationId = ref(null);
   const stationLines = ref(null);
   const selectedLine = ref(null);
+
+  const getStation = async () => {
+    loading.value = true;
+    try {
+      await StationService.fetchStations();
+      console.log(stations.value);
+    } catch (error) {
+      console.error('Erro ao buscar stations:', error);
+      throw error;
+    } finally {
+      loading.value = false;
+    }
+  };
 
   function getStationLines(stationId) {
     const station = allLines.value.find(station => station.id == stationId)
@@ -106,6 +115,11 @@ export const useStationStore = defineStore('station', () => {
       ],
     },
   ])
+
+  onMounted(() => {
+    getStation();
+  });
+
   return {
     currentStation,
     stations,
