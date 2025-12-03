@@ -1,12 +1,12 @@
 <script setup>
-import TitleSection from "@/components/template/TitleSection.vue";
+import TitleSection from "@/components/ManyPages/TitleSection.vue";
 import LineOptions from "@/components/RoutesPage/LineOptions.vue";
 import StationOptions from "@/components/RoutesPage/StationOptions.vue";
 import ItineraryOptions from "@/components/RoutesPage/ItineraryOptions.vue";
+import SensorOptions from "@/components/RoutesPage/SensorOptions.vue";
 
 import { useDisplayStore } from "@/stores/displayStore";
 import { useThemeStore } from "@/stores/themeStore";
-import SensorOptions from "@/components/RoutesPage/SensorOptions.vue";
 
 const displayStore = useDisplayStore();
 const themeStore = useThemeStore();

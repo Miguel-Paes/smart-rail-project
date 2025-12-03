@@ -58,7 +58,18 @@ function resetForm() {
     </template>
 
     <v-card class="pa-12">
-      <v-card-title class="text-accent3">Criar Aviso</v-card-title>
+      <v-card-title class="text-accent3">
+        <v-row>
+          <v-col cols="11"><h3>Criar Aviso</h3></v-col>
+          <v-col cols="1">
+            <v-btn
+              @click="dialog = !dialog"
+              color="base"
+              icon="mdi-window-close"
+            ></v-btn>
+          </v-col>
+        </v-row>
+      </v-card-title>
 
       <v-form @submit.prevent="createWarning">
         <v-row>

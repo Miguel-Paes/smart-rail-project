@@ -5,8 +5,8 @@ import { useStationStore } from "@/stores/stationStore.js";
 import { useDisplayStore } from "@/stores/displayStore.js";
 import { useWarningStore } from "@/stores/warningsStore";
 
-import FindStationDialog from "@/components/home/FindStationDialog.vue";
-import WarningsList from "@/components/template/WarningsList.vue";
+import FindStationDialog from "@/components/HomePage/FindStationDialog.vue";
+import WarningsList from "@/components/ManyPages/WarningsList.vue";
 
 const stationStore = useStationStore();
 const displayStore = useDisplayStore();

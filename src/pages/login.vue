@@ -68,7 +68,7 @@ const displayStore = useDisplayStore();
 
 .pc-background {
   background-color: transparent;
-  background: url("/images/desktop-bg.gif") no-repeat center center fixed;
+  background: url("/images/login_bg.gif") no-repeat center center fixed;
   background-size: cover;
 }
 

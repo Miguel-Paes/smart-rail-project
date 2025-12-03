@@ -3,7 +3,7 @@ import { RouterView } from "vue-router";
 import { onMounted } from "vue";
 
 import { useDisplayStore } from "@/stores/displayStore.js";
-import HeaderComponent from "@/components/HeaderComponent.vue";
+import HeaderComponent from "@/components/ManyPages/HeaderComponent.vue";
 
 const displayStore = useDisplayStore();
 </script>
@@ -21,7 +21,7 @@ const displayStore = useDisplayStore();
 
 <style scoped>
 .background-texture {
-  background-image: url("/images/fullPage-bg.png");
+  background-image: url("/images/fullPage_bg.png");
   background-repeat: repeat;
   background-size: contain;
   min-height: 100vh;

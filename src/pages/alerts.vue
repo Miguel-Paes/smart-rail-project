@@ -4,7 +4,7 @@ import { onMounted, ref } from "vue";
 import { useWarningStore } from "@/stores/warningsStore";
 import { useDisplayStore } from "@/stores/displayStore";
 
-import WarningsList from "@/components/template/WarningsList.vue";
+import WarningsList from "@/components/ManyPages/WarningsList.vue";
 import CreateAlertForm from "@/components/AlertsPage/CreateAlertForm.vue";
 
 const warningStore = useWarningStore();
